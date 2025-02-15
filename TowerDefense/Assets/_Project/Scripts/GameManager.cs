@@ -6,20 +6,17 @@ namespace DoomsDayDefense
     public class GameManager : MonoBehaviour
     {
 
-        public static GameManager instance;
+        public static GameManager Instance;
 
         public GameObject pauseMenu;
 
+        public int gold;
+        public int lives;
+
+
         void Awake()
         {
-            if (instance == null)
-            {
-                instance = this;
-            }
-            else if (instance!= this)
-            {
-                Destroy(gameObject);
-            }
+            Instance = this;
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,6 +53,19 @@ namespace DoomsDayDefense
         {
             Time.timeScale = 1;
             SceneManager.LoadScene(0);
+        }
+
+        public void TakeDamage(int damage)
+        {
+            lives -= damage;
+            if (lives <= 0) GameOver();
+        }
+
+        void GameOver()
+        {
+            Debug.Log("Game Over");
+            Time.timeScale = 0;
+            pauseMenu.SetActive(true);
         }
     }
 }
