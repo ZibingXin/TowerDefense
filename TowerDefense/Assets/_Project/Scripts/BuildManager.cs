@@ -15,11 +15,11 @@ namespace DoomsDayDefense
 
         public void BuildTurretOn(Vector3 position)
         {
-            if(GameManager.instance.gold >= 100)
+            if(GameManager.Instance.gold >= 100)
             {
                 Instantiate(turretPrefab, position, Quaternion.identity);
                 Instantiate(buildEffect, position, Quaternion.identity);
-                GameManager.instance.gold -= 100;
+                GameManager.Instance.gold -= 100;
             }
         }
     }

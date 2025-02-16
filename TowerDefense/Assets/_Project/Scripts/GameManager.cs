@@ -55,10 +55,15 @@ namespace DoomsDayDefense
             SceneManager.LoadScene(0);
         }
 
-        public void TakeDamage(int damage)
+        public void DamageBase(int damage)
         {
             lives -= damage;
             if (lives <= 0) GameOver();
+        }
+
+        public void AddGold(int goldReward)
+        {
+            this.gold += goldReward;
         }
 
         void GameOver()
