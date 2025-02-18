@@ -4,16 +4,16 @@ namespace DoomsDayDefense
 {
     public class Bullet : MonoBehaviour
     {
-        private Transform target;
         public float speed = 10f;
         public int damage = 20;
+        private Transform target;
 
         public void Seek(Transform _target)
         {
             target = _target;
         }
 
-        private void Update()
+        void Update()
         {
             if (target == null)
             {
@@ -22,20 +22,21 @@ namespace DoomsDayDefense
             }
 
             Vector3 dir = target.position - transform.position;
-            float frameDistance = speed * Time.deltaTime;
+            float distanceThisFrame = speed * Time.deltaTime;
 
-            if(dir.magnitude <= frameDistance)
+            if (dir.magnitude <= distanceThisFrame)
             {
                 HitTarget();
                 return;
             }
 
-            transform.Translate(dir.normalized * frameDistance, Space.World);
+            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+            transform.LookAt(target);
         }
 
         void HitTarget()
         {
-            EnemyHealth enemy = target.GetComponent<EnemyHealth>();
+            Enemy enemy = target.GetComponent<Enemy>();
             if (enemy != null) enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
