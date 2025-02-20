@@ -1,16 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DoomsDayDefense
 {
     public class TowerBase : MonoBehaviour
     {
-        public float range = 5f;
-        public float fireRate = 1f;
+        [SerializeField] private float range = 5f;
+        [SerializeField] private float fireRate = 1f;
         public GameObject projectilePrefab;
         public Transform firePoint;
 
         protected Transform target;
-        public float fireCountdown = 0f;
+        [SerializeField] private float fireCountdown = 0f;
 
         private void Update()
         {
@@ -31,14 +32,14 @@ namespace DoomsDayDefense
         private void UpdateTarget()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, range);
-            float shortestDistance = range;
+            float shortestDistance = Mathf.Infinity;
             GameObject nearestEnemy = null;
 
             foreach (Collider col in colliders)
             {
                 if (col.CompareTag("Enemy"))
                 {
-                    float distance = Vector3.Distance(transform.position, col.transform.position);
+                    float distance = col.GetComponentInParent<Enemy>().distance;
                     if (distance < shortestDistance)
                     {
                         shortestDistance = distance;

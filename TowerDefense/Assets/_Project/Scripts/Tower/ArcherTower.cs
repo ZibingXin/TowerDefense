@@ -8,9 +8,7 @@ namespace DoomsDayDefense
         protected override void Shoot()
         {
             GameObject arrow = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-            arrow.GetComponent<Arrow>().Seek(target);
-
-                        
+            arrow.GetComponent<Arrow>().Seek(target); 
         }
     }
 }

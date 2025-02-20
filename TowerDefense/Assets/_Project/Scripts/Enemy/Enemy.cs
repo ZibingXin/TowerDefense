@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 namespace DoomsDayDefense
 {
@@ -12,6 +13,8 @@ namespace DoomsDayDefense
         private WaypointSystem path;
         private int index = 0;
         private Vector3 destination;
+
+        public float distance;
 
         //private Transform Transform => GetComponent<Transform>();
         private void Awake()
@@ -35,6 +38,18 @@ namespace DoomsDayDefense
                 destination = path.waypoints[index].position;
                 agent.destination = destination;
             }
+            distance = SumDistance(index);
+        }
+
+        public float SumDistance(int index)
+        {
+            // sum the distance from the current position to the all next waypoints
+            float sum = Vector3.Distance(transform.position, path.waypoints[index].position);
+            for (int i = index + 1; i < path.waypoints.Count - 1; i++)
+            {
+                sum += Vector3.Distance(path.waypoints[i].position, path.waypoints[i + 1].position);
+            }
+            return sum;
         }
 
         public void TakeDamage(float damage)
