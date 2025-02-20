@@ -102,7 +102,7 @@ MonoBehaviour:
   firePoint: {fileID: 3384166778634924121}
   fireCountdown: 0
   explosionRadius: 1.5
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 1954675456323644083, guid: 786b5629546d064448d1d7b571e8e04b, type: 3}
 --- !u!135 &6358205854008392067
 SphereCollider:
   m_ObjectHideFlags: 0
