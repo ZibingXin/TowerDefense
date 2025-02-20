@@ -5,29 +5,35 @@ namespace DoomsDayDefense
 {
     public class Enemy : MonoBehaviour
     {
-        public float health = 100f;
-        public float speed = 3f;
+        private NavMeshAgent agent;
+        [SerializeField] private float health = 100f;
+        [SerializeField] private float speed = 3f;
+        [SerializeField] private float distanceThreshold = 1.0f;
         private WaypointSystem path;
-        private int currentWaypoint = 0;
+        private int index = 0;
+        private Vector3 destination;
 
-        private Transform Transform => GetComponent<Transform>();
+        //private Transform Transform => GetComponent<Transform>();
+        private void Awake()
+        {
+            agent = GetComponent<NavMeshAgent>();
+            path = FindAnyObjectByType<WaypointSystem>();
+            destination = path.waypoints[index].position;
+        }
 
         void Start()
         {
-            path = FindObjectOfType<WaypointSystem>();
-            GetComponent<NavMeshAgent>().speed = speed;
+            agent.destination = destination;
+            agent.speed = speed;
         }
 
         void Update()
         {
-            if (currentWaypoint < path.waypoints.Count)
+            if (Vector3.Distance(destination, transform.position) <= distanceThreshold)
             {
-                GetComponent<NavMeshAgent>().SetDestination(path.waypoints[currentWaypoint].position);
-
-                if (Vector3.Distance(Transform.position, path.waypoints[currentWaypoint].position) < 0.5f)
-                {
-                    currentWaypoint++;
-                }
+                index = (index + 1) % path.waypoints.Count;
+                destination = path.waypoints[index].position;
+                agent.destination = destination;
             }
         }
 
