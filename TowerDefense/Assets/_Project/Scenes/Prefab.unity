@@ -910,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697416182426812965, guid: 7971d0f7b25d33e4eb1dc28a48ca2531, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.166
+      value: -0.73
       objectReference: {fileID: 0}
     - target: {fileID: 6697416182426812965, guid: 7971d0f7b25d33e4eb1dc28a48ca2531, type: 3}
       propertyPath: m_LocalPosition.y
@@ -918,7 +918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6697416182426812965, guid: 7971d0f7b25d33e4eb1dc28a48ca2531, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.448
+      value: 1.17
       objectReference: {fileID: 0}
     - target: {fileID: 6697416182426812965, guid: 7971d0f7b25d33e4eb1dc28a48ca2531, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1007,6 +1007,10 @@ PrefabInstance:
     - target: {fileID: 5229901576827436631, guid: 018f117ec12fc574a83dacfed8756164, type: 3}
       propertyPath: m_Name
       value: enemy_ufoGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6331832896216605034, guid: 018f117ec12fc574a83dacfed8756164, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

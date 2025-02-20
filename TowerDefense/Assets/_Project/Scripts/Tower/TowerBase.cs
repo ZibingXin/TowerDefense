@@ -10,18 +10,36 @@ namespace DoomsDayDefense
         public Transform firePoint;
 
         protected Transform target;
-        private float fireCountdown = 0f;
+        public float fireCountdown = 0f;
 
         private void Update()
         {
             UpdateTarget();
+            if (target != null)
+            {
+                AimTarget(target.position);
+                if (fireCountdown <= 0f)
+                {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                fireCountdown -= Time.deltaTime;
+            }
+            
         }
 
         private void UpdateTarget()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, range);
-            float shortestDistance = Mathf.Infinity;
+            float shortestDistance = range;
             GameObject nearestEnemy = null;
+
+            if (colliders.Length == 0)
+            {
+                target = null;
+                nearestEnemy = null;
+                return;
+            }
 
             foreach (Collider col in colliders)
             {
@@ -36,7 +54,17 @@ namespace DoomsDayDefense
                 }
             }
 
-            if (nearestEnemy!= null) target = nearestEnemy.transform;
+            if (nearestEnemy != null) target = nearestEnemy.transform;
+
+        }
+
+        private void AimTarget(Vector3 position)
+        {
+            if (position == null) return;
+            Vector3 dir = position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = lookRotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
         protected virtual void Shoot() { }
