@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DoomsDayDefense
 {
-    public class Cannonball : MonoBehaviour
+    public class Stone : MonoBehaviour
     {
         public float speed = 10f;
         public int damage = 20;
