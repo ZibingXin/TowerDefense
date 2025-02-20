@@ -34,13 +34,6 @@ namespace DoomsDayDefense
             float shortestDistance = range;
             GameObject nearestEnemy = null;
 
-            if (colliders.Length == 0)
-            {
-                target = null;
-                nearestEnemy = null;
-                return;
-            }
-
             foreach (Collider col in colliders)
             {
                 if (col.CompareTag("Enemy"))
@@ -54,7 +47,14 @@ namespace DoomsDayDefense
                 }
             }
 
-            if (nearestEnemy != null) target = nearestEnemy.transform;
+            if (nearestEnemy != null)
+            {
+                target = nearestEnemy.transform;
+            }
+            else
+            {
+                target = null;
+            }
 
         }
 
