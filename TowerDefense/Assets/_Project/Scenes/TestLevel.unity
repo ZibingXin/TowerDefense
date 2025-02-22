@@ -525,54 +525,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1671835571}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &969571498
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 969571500}
-  - component: {fileID: 969571499}
-  m_Layer: 0
-  m_Name: ProjectilePool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &969571499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969571498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62d0be20107aef14d88e729d2f9b3c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pools:
-  - tag: Arrow
-    prefab: {fileID: 6844502683821768391, guid: 2fcd03a96addea74ea99966fe8d415e5, type: 3}
-    size: 0
---- !u!4 &969571500
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969571498}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013479903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1077,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 58c69804d1f689b4cb7961e47b61b499, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 823cb880db6b8f640867ca19a8ba19d4, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &2101376842
 Transform:
@@ -1153,6 +1105,5 @@ SceneRoots:
   - {fileID: 2022995617}
   - {fileID: 270338504}
   - {fileID: 1671835571}
-  - {fileID: 969571500}
   - {fileID: 2101376842}
   - {fileID: 187728011}
