@@ -8,7 +8,11 @@ namespace DoomsDayDefense
         public static GameManager Instance;
 
         [SerializeField] private int startingGold = 200;
+        [SerializeField] private int startingHealth = 100;
         private int currentGold;
+        public int currentHealth;
+
+        [SerializeField] private UIManager uiManager;
 
         public int CurrentGold
         {
@@ -26,6 +30,16 @@ namespace DoomsDayDefense
         {
             if (Instance == null) Instance = this;
             CurrentGold = startingGold;
+            currentHealth = startingHealth;
+        }
+
+        private void Update()
+        {
+            if (currentHealth <= 0)
+            {
+                Time.timeScale = 0;
+                uiManager.ShowGameOverMenu();
+            }
         }
 
         public bool PurchaseTower(int cost)
@@ -38,6 +52,11 @@ namespace DoomsDayDefense
         public void AddGold(int amount)
         {
             CurrentGold += amount;
+        }
+
+        public void HitBase(int damage)
+        {
+            currentHealth -= damage;
         }
 
     }

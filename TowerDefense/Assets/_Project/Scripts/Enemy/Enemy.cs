@@ -12,6 +12,7 @@ namespace DoomsDayDefense
         [SerializeField] private float distanceThreshold = 1.0f;
 
         [SerializeField] private int goldReward = 10;
+        [SerializeField] private int hitDamage = 10;
 
         private WaypointSystem path;
         private int index = 0;
@@ -75,8 +76,9 @@ namespace DoomsDayDefense
 
         public void HitBase()
         {
-            Debug.Log("Enemy hit base");
+            //Debug.Log("Enemy hit base: ");
             Destroy(gameObject);
+            FindAnyObjectByType<GameManager>().HitBase(hitDamage);
         }
     }
 }
