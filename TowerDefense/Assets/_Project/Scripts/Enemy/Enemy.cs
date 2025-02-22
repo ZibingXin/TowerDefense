@@ -10,6 +10,9 @@ namespace DoomsDayDefense
         [SerializeField] private float health = 100f;
         [SerializeField] private float speed = 3f;
         [SerializeField] private float distanceThreshold = 1.0f;
+
+        [SerializeField] private int goldReward = 10;
+
         private WaypointSystem path;
         private int index = 0;
         private Vector3 destination;
@@ -34,9 +37,16 @@ namespace DoomsDayDefense
         {
             if (Vector3.Distance(destination, transform.position) <= distanceThreshold)
             {
-                index = (index + 1) % path.waypoints.Count;
-                destination = path.waypoints[index].position;
-                agent.destination = destination;
+                if (index < path.waypoints.Count - 1) 
+                { 
+                    index++;
+                    destination = path.waypoints[index].position;
+                    agent.destination = destination;
+                }
+                else
+                {
+                    HitBase();
+                }
             }
             distance = SumDistance(index);
         }
@@ -59,7 +69,14 @@ namespace DoomsDayDefense
             if (health <= 0)
             {
                 Destroy(gameObject);
+                FindAnyObjectByType<GameManager>().AddGold(goldReward);
             }
+        }
+
+        public void HitBase()
+        {
+            Debug.Log("Enemy hit base");
+            Destroy(gameObject);
         }
     }
 }
