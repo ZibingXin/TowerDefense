@@ -1,17 +1,38 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DoomsDayDefense
 {
-    public class TowerBase : MonoBehaviour
+    public abstract class TowerBase : MonoBehaviour
     {
+        public event System.Action OnDestroyed;
+
+        public int buildCost = 50;
         [SerializeField] private float range = 5f;
         [SerializeField] private float fireRate = 1f;
         public GameObject projectilePrefab;
         public Transform firePoint;
 
         protected Transform target;
+        protected bool isActive = true;
         [SerializeField] private float fireCountdown = 0f;
+
+        public virtual void InitializeTower()
+        {
+            StartCoroutine(AttackRoutine());
+        }
+
+        protected abstract IEnumerator AttackRoutine();
+
+        public virtual void SellTower()
+        {
+            OnDestroyed?.Invoke();
+            Destroy(gameObject);
+        }
+
+        public virtual string TowerStats => $"Range: {range}, Fire Rate: {fireRate}";
+        public int SellValue => Mathf.FloorToInt(buildCost * 0.7f);
 
         private void Update()
         {

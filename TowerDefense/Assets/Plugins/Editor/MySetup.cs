@@ -7,7 +7,7 @@ public static class MySetup
     [MenuItem("Setup/Create Folders")]
     public static void CreateMyFolder()
     {
-        Folder.CreateFolder("_Project", "Animations", "Art", "Audio", "Fonts",
+        Folder.CreateFolder("_Project_", "Animations", "Art", "Audio", "Fonts",
         "Materials", "Prefabs", "ScriptableObjects", "Scripts", "Settings");
         AssetDatabase.Refresh();
     }

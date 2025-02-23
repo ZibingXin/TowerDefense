@@ -1,12 +1,20 @@
+using System.Collections;
 using UnityEngine;
 
 namespace DoomsDayDefense
 {
     public class CatapultTower : TowerBase
     {
+        //public new int buildCost = 50;
+
         [Header("Catapult Settings")]
         public float explosionRadius = 3f;
         public ParticleSystem explosionEffect;
+
+        protected override IEnumerator AttackRoutine()
+        {
+            throw new System.NotImplementedException();
+        }
 
         protected override void Shoot()
         {

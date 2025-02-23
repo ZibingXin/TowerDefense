@@ -7,34 +7,89 @@ namespace DoomsDayDefense
     {
         public static BuildManager Instance;
 
-        [Header("Tower Blueprints")]
-        public List<GameObject> availableTowers = new List<GameObject>();
-
-        public BuildSite ActiveSite { get; private set; }
-        public bool IsBuilding { get; private set; }
-
-        void Awake()
+        [System.Serializable]
+        public class TowerPrefabConfig
         {
-            if (Instance == null) Instance = this;
+            public string towerName;
+            public TowerBase towerPrefab;
+            public Sprite buttonIcon;
+            public int buildCost;
         }
 
-        public void SetActiveSite(BuildSite site)
+        [SerializeField] private TowerPrefabConfig[] towerConfigs;
+        private TowerPrefabConfig selectedTowerConfig;
+        private List<BuildSite> activeSites = new List<BuildSite>();
+
+        public bool IsBuilding => selectedTowerConfig != null;
+
+        private void Awake()
         {
-            ActiveSite = site;
-            IsBuilding = true;
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
-        public void CompleteBuilding()
+        private void Update()
         {
-            ActiveSite = null;
-            IsBuilding = false;
+            if (Input.GetMouseButtonDown(1))
+            {
+                ClearSelection();
+            }
         }
 
-        public GameObject GetTowerPrefab(int index)
+        public void SelectTower(int configIndex)
         {
-            if (index >= 0 && index < availableTowers.Count)
-                return availableTowers[index];
-            return null;
+            if (configIndex < 0 || configIndex >= towerConfigs.Length) return;
+
+            selectedTowerConfig = towerConfigs[configIndex];
+            ToggleBuildSitesHighlight(true);
         }
+
+        public void BuildTowerAt(BuildSite site)
+        {
+            if (selectedTowerConfig == null) return;
+
+            TowerBase newTower = Instantiate(
+                selectedTowerConfig.towerPrefab,
+                site.transform.position,
+                Quaternion.identity
+            );
+
+            newTower.InitializeTower();
+            site.OccupySite(newTower);
+
+            ClearSelection();
+        }
+
+        public void RegisterBuildSite(BuildSite site)
+        {
+            activeSites.Add(site);
+        }
+
+        public void UnregisterBuildSite(BuildSite site)
+        {
+            activeSites.Remove(site);
+        }
+
+        private void ToggleBuildSitesHighlight(bool state)
+        {
+            foreach (var site in activeSites)
+            {
+                site.SetHightlight(state && !site.IsOccupied);
+            }
+        }
+
+        private void ClearSelection()
+        {
+            selectedTowerConfig = null;
+            ToggleBuildSitesHighlight(false);
+        }
+
+        
     }
 }

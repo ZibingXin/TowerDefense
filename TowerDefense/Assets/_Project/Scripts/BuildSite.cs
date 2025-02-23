@@ -1,76 +1,59 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace DoomsDayDefense
 {
     public class BuildSite : MonoBehaviour
     {
-        [Header("Settings")]
-        public bool isOccupied = false;
-        public Vector3 towerOffset = new Vector3(0, 0.2f, 0);
+        [SerializeField] private GameObject highlightEffect;
+        private TowerBase currentTower;
 
-        [Header("Visuals")]
-        public Material highlightMaterial;
-        private Material originalMaterial;
-        private MeshRenderer meshRenderer;
+        public bool IsOccupied => currentTower != null;
 
-        [Header("UI")]
-        public Canvas buildMenuCanvas;
-        public RectTransform buttonPanel;
-
-        void Start()
+        private void Start()
         {
-            meshRenderer = GetComponent<MeshRenderer>();
-            originalMaterial = meshRenderer.material;
-            buildMenuCanvas.gameObject.SetActive(false);
+            BuildManager.Instance.RegisterBuildSite(this);
+            highlightEffect.SetActive(false);
         }
 
-        void OnMouseEnter()
+        private void OnDestroy()
         {
-            if (!isOccupied)
-                meshRenderer.material = highlightMaterial;
+            BuildManager.Instance?.UnregisterBuildSite(this);
         }
 
-        void OnMouseExit()
+        public void SetHightlight(bool state)
         {
-            meshRenderer.material = originalMaterial;
-        }
-
-        void OnMouseDown()
-        {
-            if (!isOccupied && !BuildManager.Instance.IsBuilding)
-                ShowBuildMenu();
-        }
-
-        public void ShowBuildMenu()
-        {
-            BuildManager.Instance.SetActiveSite(this);
-            buildMenuCanvas.gameObject.SetActive(true);
-            PositionBuildMenu();
-        }
-
-        void PositionBuildMenu()
-        {
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-            buttonPanel.position = screenPos + new Vector3(0, 100, 0);
-        }
-
-        public void BuildTower(GameObject towerPrefab)
-        {
-            if (isOccupied) return;
-
-            TowerBlueprint blueprint = towerPrefab.GetComponent<TowerBlueprint>();
-            if (GameManager.Instance.PurchaseTower(blueprint.cost))
+            if (!IsOccupied)
             {
-                Instantiate(towerPrefab, transform.position + towerOffset, Quaternion.identity);
-                isOccupied = true;
-                buildMenuCanvas.gameObject.SetActive(false);
-                BuildManager.Instance.CompleteBuilding();
+                highlightEffect.SetActive(state);
             }
-            else
+        }
+
+        private void OnMouseDown()
+        {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+
+            if (!IsOccupied && BuildManager.Instance.IsBuilding)
             {
-                // gold not enough
-                //UIManager.Instance.ShowMessage("Gold not enough");
+                BuildManager.Instance.BuildTowerAt(this);
             }
+            else if (IsOccupied)
+            {
+                TowerUI.Instance.ShowTowerInfo(currentTower);
+            }
+        }
+
+        public void OccupySite(TowerBase tower)
+        {
+            currentTower = tower;
+            tower.OnDestroyed += ClearSite;
+            SetHightlight(false);
+        }
+
+        private void ClearSite()
+        {
+            currentTower = null;
         }
     }
 }

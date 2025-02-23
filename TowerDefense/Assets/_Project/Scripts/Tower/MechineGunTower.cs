@@ -5,9 +5,16 @@ namespace DoomsDayDefense
 {
     public class MachineGunTower : TowerBase
     {
+        //public new int buildCost = 50;
+
         [Header("Machine Gun Settings")]
         public int burstCount = 5;
         public float burstInterval = 0.1f;
+
+        protected override IEnumerator AttackRoutine()
+        {
+            throw new System.NotImplementedException();
+        }
 
         protected override void Shoot()
         {
