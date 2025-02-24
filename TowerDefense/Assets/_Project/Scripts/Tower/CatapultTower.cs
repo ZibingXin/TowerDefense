@@ -11,10 +11,10 @@ namespace DoomsDayDefense
         public float explosionRadius = 3f;
         public ParticleSystem explosionEffect;
 
-        protected override IEnumerator AttackRoutine()
-        {
-            throw new System.NotImplementedException();
-        }
+        //protected override IEnumerator AttackRoutine()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         protected override void Shoot()
         {

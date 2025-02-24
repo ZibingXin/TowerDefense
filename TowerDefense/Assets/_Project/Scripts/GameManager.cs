@@ -9,7 +9,7 @@ namespace DoomsDayDefense
 
         [SerializeField] private int startingGold = 200;
         [SerializeField] private int startingHealth = 100;
-        private int currentGold;
+        public int currentGold;
         public int currentHealth;
 
         [SerializeField] private UIManager uiManager;
@@ -37,7 +37,7 @@ namespace DoomsDayDefense
         {
             if (currentHealth <= 0)
             {
-                Time.timeScale = 0;
+                //Time.timeScale = 0;
                 uiManager.ShowGameOverMenu();
             }
         }

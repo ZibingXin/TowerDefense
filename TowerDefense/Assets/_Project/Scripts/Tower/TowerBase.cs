@@ -9,21 +9,21 @@ namespace DoomsDayDefense
         public event System.Action OnDestroyed;
 
         public int buildCost = 50;
-        [SerializeField] private float range = 5f;
-        [SerializeField] private float fireRate = 1f;
+        [SerializeField] protected float range = 5f;
+        [SerializeField] protected float fireRate = 1f;
         public GameObject projectilePrefab;
         public Transform firePoint;
 
         protected Transform target;
         protected bool isActive = true;
-        [SerializeField] private float fireCountdown = 0f;
+        [SerializeField] protected float fireCountdown = 0f;
 
-        public virtual void InitializeTower()
-        {
-            StartCoroutine(AttackRoutine());
-        }
+        //public virtual void InitializeTower()
+        //{
+        //    StartCoroutine(AttackRoutine());
+        //}
 
-        protected abstract IEnumerator AttackRoutine();
+        //protected abstract IEnumerator AttackRoutine();
 
         public virtual void SellTower()
         {
@@ -43,14 +43,15 @@ namespace DoomsDayDefense
                 if (fireCountdown <= 0f)
                 {
                     Shoot();
+                    AudioManager.Instance.PlaySFX("TowerAttack", transform.position);
                     fireCountdown = 1f / fireRate;
                 }
                 fireCountdown -= Time.deltaTime;
             }
-            
         }
 
-        private void UpdateTarget()
+
+        protected void UpdateTarget()
         {
             Collider[] colliders = Physics.OverlapSphere(transform.position, range);
             float shortestDistance = Mathf.Infinity;
@@ -80,7 +81,7 @@ namespace DoomsDayDefense
 
         }
 
-        private void AimTarget(Vector3 position)
+        protected void AimTarget(Vector3 position)
         {
             if (position == null) return;
             Vector3 dir = position - transform.position;

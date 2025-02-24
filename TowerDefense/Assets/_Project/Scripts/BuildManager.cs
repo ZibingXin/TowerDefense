@@ -7,20 +7,11 @@ namespace DoomsDayDefense
     {
         public static BuildManager Instance;
 
-        [System.Serializable]
-        public class TowerPrefabConfig
-        {
-            public string towerName;
-            public TowerBase towerPrefab;
-            public Sprite buttonIcon;
-            public int buildCost;
-        }
+        [SerializeField] private GameObject[] towers;
+        private GameObject selectedTower;
+        public List<BuildSite> activeSites = new();
 
-        [SerializeField] private TowerPrefabConfig[] towerConfigs;
-        private TowerPrefabConfig selectedTowerConfig;
-        private List<BuildSite> activeSites = new List<BuildSite>();
-
-        public bool IsBuilding => selectedTowerConfig != null;
+        public bool IsBuilding => selectedTower != null;
 
         private void Awake()
         {
@@ -44,24 +35,38 @@ namespace DoomsDayDefense
 
         public void SelectTower(int configIndex)
         {
-            if (configIndex < 0 || configIndex >= towerConfigs.Length) return;
+            if (configIndex < 0 || configIndex >= towers.Length) return;
 
-            selectedTowerConfig = towerConfigs[configIndex];
+            selectedTower = towers[configIndex];
             ToggleBuildSitesHighlight(true);
         }
 
         public void BuildTowerAt(BuildSite site)
         {
-            if (selectedTowerConfig == null) return;
+            if (selectedTower == null) return;
 
-            TowerBase newTower = Instantiate(
-                selectedTowerConfig.towerPrefab,
-                site.transform.position,
-                Quaternion.identity
-            );
+            Vector3 position = new(site.transform.position.x, site.transform.position.y + 0.2f, site.transform.position.z);
 
-            newTower.InitializeTower();
-            site.OccupySite(newTower);
+            // create a new tower on the base site
+
+            selectedTower = Instantiate(selectedTower, position, Quaternion.identity);
+
+            //TowerBase newTower = selectedTower.GetComponent<TowerBase>();
+            //newTower.transform.SetPositionAndRotation(position, Quaternion.identity);
+            ////newTower.transform.parent = site.transform;
+            //newTower.gameObject.SetActive(true);
+
+
+            //TowerBase newTower = Instantiate(
+            //    selectedTower,
+            //    position,
+            //    Quaternion.identity
+            //);
+
+            //newTower.InitializeTower();
+            site.OccupySite(selectedTower.GetComponent<TowerBase>());
+
+            GameManager.Instance.currentGold -= selectedTower.GetComponent<TowerBase>().buildCost;
 
             ClearSelection();
         }
@@ -86,7 +91,7 @@ namespace DoomsDayDefense
 
         private void ClearSelection()
         {
-            selectedTowerConfig = null;
+            selectedTower = null;
             ToggleBuildSitesHighlight(false);
         }
 

@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4e9b862e3d8030c4ea51a40bdcf6ff0c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e9b862e3d8030c4ea51a40bdcf6ff0c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e9b862e3d8030c4ea51a40bdcf6ff0c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4e9b862e3d8030c4ea51a40bdcf6ff0c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58fb21f845abec419fbb264652e9400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildCost: 50
   range: 2.5
   fireRate: 1
   projectilePrefab: {fileID: 6844502683821768391, guid: 2fcd03a96addea74ea99966fe8d415e5, type: 3}
@@ -129,5 +130,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.79
+  m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}

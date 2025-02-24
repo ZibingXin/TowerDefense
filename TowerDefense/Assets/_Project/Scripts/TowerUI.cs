@@ -38,7 +38,6 @@ namespace DoomsDayDefense
         private void UpdateUI()
         {
             statsText.text = currentTower.TowerStats;
-            //upgradeButton.interactable = /* 检查升级条件和资源 */;
             sellButton.GetComponentInChildren<TextMeshProUGUI>().text = $"Sell ({currentTower.SellValue})";
         }
 

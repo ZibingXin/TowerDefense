@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee265b5e58cc8434fb768615c1827dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildCost: 50
   range: 3.6
   fireRate: 1
   projectilePrefab: {fileID: 519292732728085653, guid: 6fce59d8bdeee3f4896abfbfea49bf65, type: 3}
@@ -106,7 +107,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.56
+  m_Radius: 1.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &6698142466273265186 stripped
 Transform:

@@ -11,10 +11,10 @@ namespace DoomsDayDefense
         public int burstCount = 5;
         public float burstInterval = 0.1f;
 
-        protected override IEnumerator AttackRoutine()
-        {
-            throw new System.NotImplementedException();
-        }
+        //protected override IEnumerator AttackRoutine()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         protected override void Shoot()
         {

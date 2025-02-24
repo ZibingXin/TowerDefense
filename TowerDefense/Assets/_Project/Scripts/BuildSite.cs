@@ -6,7 +6,9 @@ namespace DoomsDayDefense
 {
     public class BuildSite : MonoBehaviour
     {
-        [SerializeField] private GameObject highlightEffect;
+        [SerializeField] private Material highlightMaterial;
+        private Material startMaterial;
+
         private TowerBase currentTower;
 
         public bool IsOccupied => currentTower != null;
@@ -14,7 +16,8 @@ namespace DoomsDayDefense
         private void Start()
         {
             BuildManager.Instance.RegisterBuildSite(this);
-            highlightEffect.SetActive(false);
+            startMaterial = GetComponent<MeshRenderer>().material;
+
         }
 
         private void OnDestroy()
@@ -22,11 +25,17 @@ namespace DoomsDayDefense
             BuildManager.Instance?.UnregisterBuildSite(this);
         }
 
+        //public void OnMouseEnter()
+        //{
+        //    //SetHightlight(true);
+        //    GetComponent<MeshRenderer>().material = highlightMaterial;
+        //}
+
         public void SetHightlight(bool state)
         {
             if (!IsOccupied)
             {
-                highlightEffect.SetActive(state);
+                GetComponent<MeshRenderer>().material = state? highlightMaterial : startMaterial;
             }
         }
 

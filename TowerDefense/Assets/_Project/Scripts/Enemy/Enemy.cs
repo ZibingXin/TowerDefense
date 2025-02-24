@@ -66,6 +66,7 @@ namespace DoomsDayDefense
         public void TakeDamage(float damage)
         {
             health -= damage;
+            AudioManager.Instance.PlaySFX("EnemyHit", transform.position);
 
             if (health <= 0)
             {

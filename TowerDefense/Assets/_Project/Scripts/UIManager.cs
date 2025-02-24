@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,8 @@ namespace DoomsDayDefense
 
         public GameObject pauseMenu;
         public GameObject gameOverMenu;
+        public GameObject healthText;
+        public GameObject goldText;
 
         private void Awake()
         {
@@ -21,6 +24,7 @@ namespace DoomsDayDefense
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
                 if (pauseMenu.activeSelf)
                 {
                     HidePauseMenu();
@@ -30,16 +34,21 @@ namespace DoomsDayDefense
                     ShowPauseMenu();
                 }
             }
+
+            healthText.GetComponent<TextMeshProUGUI>().text = "Health: " + GameManager.Instance.currentHealth;
+            goldText.GetComponent<TextMeshProUGUI>().text = "Gold: " + GameManager.Instance.currentGold;
         }
 
         public void ShowPauseMenu()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
         }
 
         public void HidePauseMenu()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
         }
@@ -52,8 +61,11 @@ namespace DoomsDayDefense
 
         public void GoBackToMainMenu()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             if (Time.timeScale == 0) Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }
+
+        
     }
 }

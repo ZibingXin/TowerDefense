@@ -11,16 +11,19 @@ namespace DoomsDayDefense
         // mainmenu methods
         public void OnPlayButtonClicked()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             SceneManager.LoadScene("Level1");
         }
 
         public void OnSettingButtonClicked()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             settingPanel.SetActive(true);
         }
 
         public void OnQuitButtonClicked()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             Application.Quit();
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -30,15 +33,11 @@ namespace DoomsDayDefense
         // setting panel methods
         public void OnBackButtonClicked()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             settingPanel.SetActive(false);
         }
 
-        //public void OnMusicSliderChanged(float value)
-        //{
-        //    AudioManager.Instance.SetMusicVolume(value);
-        //}
-
-
+       
 
         
     }
