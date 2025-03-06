@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace DoomsDayDefense
@@ -19,6 +20,7 @@ namespace DoomsDayDefense
     {
         public List<Wave> waves;
         public Transform spawnPoint;
+        public TextMeshProUGUI waveText;
 
         private int currentWaveIndex = -1;
         private bool isSpawning = false;
@@ -38,6 +40,7 @@ namespace DoomsDayDefense
             if (!isSpawning && currentWaveIndex < waves.Count - 1)
             {
                 currentWaveIndex++;
+                waveText.text = $"Wave {currentWaveIndex + 1}";
                 StartCoroutine(SpawnWave(waves[currentWaveIndex]));
             }
         }
@@ -58,7 +61,11 @@ namespace DoomsDayDefense
 
             if (currentWaveIndex < waves.Count - 1)
             {
-                yield return new WaitForSeconds(5f);
+                for (int i = 5; i > 0; i--)
+                {
+                    waveText.text = "Wait " + i + "s..";
+                    yield return new WaitForSeconds(1f);
+                }
                 StartNextWave();
             }
             else

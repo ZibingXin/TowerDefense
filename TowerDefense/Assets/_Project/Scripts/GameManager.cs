@@ -9,8 +9,13 @@ namespace DoomsDayDefense
 
         [SerializeField] private int startingGold = 200;
         [SerializeField] private int startingHealth = 100;
+        [SerializeField] private int startingWave = 1;
         public int currentGold;
         public int currentHealth;
+
+        public int redCrystals;
+        public int blueCrystals;
+        public int greenCrystals;
 
         [SerializeField] private UIManager uiManager;
 
@@ -57,6 +62,22 @@ namespace DoomsDayDefense
         public void HitBase(int damage)
         {
             currentHealth -= damage;
+        }
+
+        public void AddCrystal(CrystalType ct, int n)
+        {
+            switch (ct)
+            {
+                case CrystalType.Red:
+                    redCrystals += n;
+                    break;
+                case CrystalType.Blue:
+                    blueCrystals += n;
+                    break;
+                case CrystalType.Green:
+                    greenCrystals += n;
+                    break;
+            }
         }
 
     }
