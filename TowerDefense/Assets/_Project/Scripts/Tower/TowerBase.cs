@@ -12,6 +12,7 @@ namespace DoomsDayDefense
         public CrystalType crystalType;
         public int buildCost = 50;
 
+        [SerializeField] protected int level = 1;
         [SerializeField] protected float range = 5f;
         [SerializeField] protected float fireRate = 1f;
         public GameObject projectilePrefab;
@@ -22,22 +23,22 @@ namespace DoomsDayDefense
         [SerializeField] protected float fireCountdown = 0f;
 
         // tower UI
-        [SerializeField] protected GameObject towerUI;
-        //[SerializeField] protected GameObject upgradeBtn;
-        //[SerializeField] protected GameObject sellBtn;
+        [SerializeField] private GameObject towerUIRoot;
+        [SerializeField] private TextMeshProUGUI towerInfoText;
 
-        //public virtual void InitializeTower()
-        //{
-        //    StartCoroutine(AttackRoutine());
-        //}
+        public virtual string TowerStats => $"Level: {level}, Range: {range}, Fire Rate: {fireRate}";
+        public int SellValue => Mathf.FloorToInt(buildCost * 0.6f);
 
-        //protected abstract IEnumerator AttackRoutine();
+        private void Start()
+        {
+            if (towerUIRoot == null)
+                towerUIRoot = GetComponentInChildren<TowerUI>(true).gameObject;
 
+            if (towerInfoText == null)
+                towerInfoText = GetComponentInChildren<TextMeshProUGUI>(true);
 
-
-        public virtual string TowerStats => $"Range: {range}, Fire Rate: {fireRate}";
-        public int SellValue => Mathf.FloorToInt(buildCost * 0.7f);
-
+            towerUIRoot.SetActive(false);
+        }
         private void Update()
         {
             UpdateTarget();
@@ -51,6 +52,12 @@ namespace DoomsDayDefense
                     fireCountdown = 1f / fireRate;
                 }
                 fireCountdown -= Time.deltaTime;
+            }
+
+            if (towerUIRoot.activeSelf && Input.GetMouseButtonDown(1))
+            {
+                AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+                CloseTowerUI();
             }
         }
 
@@ -98,22 +105,43 @@ namespace DoomsDayDefense
 
         private void OnMouseDown()
         {
-            Debug.Log("Tower Clicked");
-            towerUI.SetActive(true);
+            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            towerUIRoot.SetActive(true);
+            towerInfoText.text = TowerStats;
         }
 
         public void CloseTowerUI()
         {
-            towerUI.SetActive(false);
+            towerUIRoot.SetActive(false);
         }
 
         public void UpgradeTower()
         {
             Debug.Log("Upgrade Tower");
+            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            level++;
+            range += 1f;
+            fireRate += 0.5f;
+            towerInfoText.text = TowerStats;
+            CloseTowerUI();
         }
 
         public virtual void SellTower()
         {
+            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            CloseTowerUI();
+            switch (crystalType)
+            {
+                case CrystalType.Red:
+                    GameManager.Instance.redCrystals += SellValue;
+                    break;
+                case CrystalType.Blue:
+                    GameManager.Instance.blueCrystals += SellValue;
+                    break;
+                case CrystalType.Green:
+                    GameManager.Instance.greenCrystals += SellValue;
+                    break;
+            }
             OnDestroyed?.Invoke();
             Destroy(gameObject);
         }

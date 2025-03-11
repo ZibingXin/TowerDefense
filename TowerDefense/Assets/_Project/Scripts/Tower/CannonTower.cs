@@ -19,8 +19,12 @@ namespace DoomsDayDefense
         protected override void Shoot()
         {
             GameObject cannonball = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-            cannonball.GetComponent<Cannonball>().Seek(target);
-            //cannonball.OnImpact += HandleExplosion;
+            Cannonball cannonballComponent = cannonball.GetComponent<Cannonball>();
+            if (cannonballComponent != null)
+            {
+                cannonballComponent.Seek(target);
+                cannonballComponent.OnImpact += HandleExplosion;
+            }
         }
 
         void HandleExplosion(Vector3 explosionPosition)

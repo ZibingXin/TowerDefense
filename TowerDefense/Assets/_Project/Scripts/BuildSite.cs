@@ -49,7 +49,7 @@ namespace DoomsDayDefense
             }
             else if (IsOccupied)
             {
-                TowerUI.Instance.ShowTowerInfo(currentTower);
+                //TowerUI.Instance.ShowTowerInfo(currentTower);
             }
         }
 

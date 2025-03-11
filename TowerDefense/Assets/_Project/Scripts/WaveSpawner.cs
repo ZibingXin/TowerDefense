@@ -24,13 +24,13 @@ namespace DoomsDayDefense
 
         private int currentWaveIndex = -1;
         private bool isSpawning = false;
-        private bool wavesStarted = false;
+        //private bool wavesStarted = false;
 
         public void StartWaves()
         {
             if (!isSpawning && currentWaveIndex < waves.Count - 1)
             {
-                wavesStarted = true;
+                //wavesStarted = true;
                 StartNextWave();
             }
         }

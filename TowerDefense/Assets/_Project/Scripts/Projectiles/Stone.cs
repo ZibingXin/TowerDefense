@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DoomsDayDefense
@@ -11,6 +12,7 @@ namespace DoomsDayDefense
         private Vector3 initialVelocity;
         private Vector3 startPosition;
         private float timeSinceLaunch;
+        internal Action<Vector3> OnImpact;
 
         public void Seek(Transform _target)
         {

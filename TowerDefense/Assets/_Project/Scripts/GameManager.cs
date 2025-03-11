@@ -9,7 +9,7 @@ namespace DoomsDayDefense
 
         [SerializeField] private int startingGold = 50;
         [SerializeField] private int startingHealth = 100;
-        [SerializeField] private int startingWave = 1;
+        //[SerializeField] private int startingWave = 1;
         public int currentGold;
         public int currentHealth;
 

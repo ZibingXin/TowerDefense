@@ -19,8 +19,12 @@ namespace DoomsDayDefense
         protected override void Shoot()
         {
             GameObject stone = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-            stone.GetComponent<Stone>().Seek(target);
-            //cannonball.OnImpact += HandleExplosion;
+            Stone stoneComponent = stone.GetComponent<Stone>();
+            if (stoneComponent != null)
+            {
+                stoneComponent.Seek(target);
+                stoneComponent.OnImpact += HandleExplosion;
+            }
         }
 
         void HandleExplosion(Vector3 explosionPosition)
