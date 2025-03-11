@@ -7,7 +7,7 @@ namespace DoomsDayDefense
     {
         public static GameManager Instance;
 
-        [SerializeField] private int startingGold = 200;
+        [SerializeField] private int startingGold = 50;
         [SerializeField] private int startingHealth = 100;
         [SerializeField] private int startingWave = 1;
         public int currentGold;
@@ -69,13 +69,16 @@ namespace DoomsDayDefense
             switch (ct)
             {
                 case CrystalType.Red:
-                    redCrystals += n;
+                    if (redCrystals < 200) redCrystals += n;
+                    if (redCrystals > 200) redCrystals = 200;
                     break;
                 case CrystalType.Blue:
-                    blueCrystals += n;
+                    if (blueCrystals < 200) blueCrystals += n;
+                    if (blueCrystals > 200) blueCrystals = 200;
                     break;
                 case CrystalType.Green:
-                    greenCrystals += n;
+                    if (greenCrystals < 200) greenCrystals += n;
+                    if (greenCrystals > 200) greenCrystals = 200;
                     break;
             }
         }

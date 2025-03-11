@@ -126,12 +126,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d4a4d394dbdb640be78cfd0b9b0adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crystalType: 1
   buildCost: 50
   range: 3
   fireRate: 1
   projectilePrefab: {fileID: 6303814690657633685, guid: 483b597da09045e4494c8a9399367c3a, type: 3}
   firePoint: {fileID: 4526575716192088927}
   fireCountdown: 0
+  towerUI: {fileID: 0}
   burstCount: 2
   burstInterval: 0.1
 --- !u!64 &-4766856477691291853

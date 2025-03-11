@@ -45,28 +45,44 @@ namespace DoomsDayDefense
         {
             if (selectedTower == null) return;
 
+            TowerBase towerBasePrefab = selectedTower.GetComponent<TowerBase>();
+            if (towerBasePrefab == null)
+            {
+                Debug.Log("Prefab is null");
+                return;
+            }
+
+            // initial new tower
             Vector3 position = new(site.transform.position.x, site.transform.position.y + 0.2f, site.transform.position.z);
+            GameObject newTower = Instantiate(selectedTower, position, Quaternion.identity);
+            
+            TowerBase towerInstance = newTower.GetComponent<TowerBase>();
+            if (towerInstance == null)
+            {
+                Debug.Log("Tower instance is null");
+                return;
+            }
 
-            // create a new tower on the base site
+            // occupy the build site
+            site.OccupySite(towerInstance);
 
-            selectedTower = Instantiate(selectedTower, position, Quaternion.identity);
+            // get the crystal type and cost
+            CrystalType crystalType = towerBasePrefab.crystalType;
+            int cost = towerBasePrefab.buildCost;
 
-            //TowerBase newTower = selectedTower.GetComponent<TowerBase>();
-            //newTower.transform.SetPositionAndRotation(position, Quaternion.identity);
-            ////newTower.transform.parent = site.transform;
-            //newTower.gameObject.SetActive(true);
-
-
-            //TowerBase newTower = Instantiate(
-            //    selectedTower,
-            //    position,
-            //    Quaternion.identity
-            //);
-
-            //newTower.InitializeTower();
-            site.OccupySite(selectedTower.GetComponent<TowerBase>());
-
-            GameManager.Instance.currentGold -= selectedTower.GetComponent<TowerBase>().buildCost;
+            // deduct the crystal cost
+            switch (crystalType)
+            {
+                case CrystalType.Red:
+                    GameManager.Instance.redCrystals -= cost;
+                    break;
+                case CrystalType.Blue:
+                    GameManager.Instance.blueCrystals -= cost;
+                    break;
+                case CrystalType.Green:
+                    GameManager.Instance.greenCrystals -= cost;
+                    break;
+            }
 
             Debug.Log("Tower built at " + site.transform.position);
 

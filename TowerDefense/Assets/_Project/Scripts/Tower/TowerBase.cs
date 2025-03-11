@@ -9,7 +9,9 @@ namespace DoomsDayDefense
     {
         public event System.Action OnDestroyed;
 
+        public CrystalType crystalType;
         public int buildCost = 50;
+
         [SerializeField] protected float range = 5f;
         [SerializeField] protected float fireRate = 1f;
         public GameObject projectilePrefab;

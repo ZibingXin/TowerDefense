@@ -12,6 +12,10 @@ namespace DoomsDayDefense
         public GameObject gameOverMenu;
         public GameObject healthText;
         public GameObject goldText;
+        public GameObject redCrystalText;
+        public GameObject greenCrystalText;
+        public GameObject blueCrystalText;
+
 
         private void Awake()
         {
@@ -37,6 +41,9 @@ namespace DoomsDayDefense
 
             healthText.GetComponent<TextMeshProUGUI>().text = "Health: " + GameManager.Instance.currentHealth;
             goldText.GetComponent<TextMeshProUGUI>().text = "Gold: " + GameManager.Instance.currentGold;
+            redCrystalText.GetComponent<TextMeshProUGUI>().text = "Red: " + GameManager.Instance.redCrystals + "/200";
+            greenCrystalText.GetComponent<TextMeshProUGUI>().text = "Green: " + GameManager.Instance.greenCrystals + "/200";
+            blueCrystalText.GetComponent<TextMeshProUGUI>().text = "Blue: " + GameManager.Instance.blueCrystals + "/200";
         }
 
         public void ShowPauseMenu()

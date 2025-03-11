@@ -42,7 +42,7 @@ namespace DoomsDayDefense
             }
 
             GameManager.Instance.AddCrystal(crystalType, captureAmount);
-            Debug.Log("Captured " + captureAmount + " " + crystalType + " crystals\nCurrent: " + GameManager.Instance.redCrystals);
+            //Debug.Log("Captured " + captureAmount + " " + crystalType + " crystals\nCurrent: " + GameManager.Instance.redCrystals);
         }
 
     }
