@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,6 +19,11 @@ namespace DoomsDayDefense
         protected bool isActive = true;
         [SerializeField] protected float fireCountdown = 0f;
 
+        // tower UI
+        [SerializeField] protected GameObject towerUI;
+        //[SerializeField] protected GameObject upgradeBtn;
+        //[SerializeField] protected GameObject sellBtn;
+
         //public virtual void InitializeTower()
         //{
         //    StartCoroutine(AttackRoutine());
@@ -25,11 +31,7 @@ namespace DoomsDayDefense
 
         //protected abstract IEnumerator AttackRoutine();
 
-        public virtual void SellTower()
-        {
-            OnDestroyed?.Invoke();
-            Destroy(gameObject);
-        }
+
 
         public virtual string TowerStats => $"Range: {range}, Fire Rate: {fireRate}";
         public int SellValue => Mathf.FloorToInt(buildCost * 0.7f);
@@ -91,6 +93,28 @@ namespace DoomsDayDefense
         }
 
         protected virtual void Shoot() { }
+
+        private void OnMouseDown()
+        {
+            Debug.Log("Tower Clicked");
+            towerUI.SetActive(true);
+        }
+
+        public void CloseTowerUI()
+        {
+            towerUI.SetActive(false);
+        }
+
+        public void UpgradeTower()
+        {
+            Debug.Log("Upgrade Tower");
+        }
+
+        public virtual void SellTower()
+        {
+            OnDestroyed?.Invoke();
+            Destroy(gameObject);
+        }
 
         private void OnDrawGizmosSelected()
         {

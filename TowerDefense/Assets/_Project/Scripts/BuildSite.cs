@@ -41,7 +41,7 @@ namespace DoomsDayDefense
 
         private void OnMouseDown()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            //if (EventSystem.current.IsPointerOverGameObject()) return;
 
             if (!IsOccupied && BuildManager.Instance.IsBuilding)
             {

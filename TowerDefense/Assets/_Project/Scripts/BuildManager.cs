@@ -68,6 +68,8 @@ namespace DoomsDayDefense
 
             GameManager.Instance.currentGold -= selectedTower.GetComponent<TowerBase>().buildCost;
 
+            Debug.Log("Tower built at " + site.transform.position);
+
             ClearSelection();
         }
 

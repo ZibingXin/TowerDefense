@@ -77,7 +77,7 @@ PrefabInstance:
       addedObject: {fileID: 7672691610405993603}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ccee9ad327f656640ab1bf19f91ba9a7, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6358205854008392067}
+      addedObject: {fileID: 5977524598772361843}
   m_SourcePrefab: {fileID: 100100000, guid: ccee9ad327f656640ab1bf19f91ba9a7, type: 3}
 --- !u!1 &649806110707415170 stripped
 GameObject:
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d37aaecf1cf357479833d9480233652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildCost: 50
   range: 5
   fireRate: 1
   projectilePrefab: {fileID: 8357030476305472537, guid: 10437d76aaac05344a26391658e51f47, type: 3}
@@ -103,8 +104,8 @@ MonoBehaviour:
   fireCountdown: 0
   explosionRadius: 1.5
   explosionEffect: {fileID: 1954675456323644083, guid: 786b5629546d064448d1d7b571e8e04b, type: 3}
---- !u!135 &6358205854008392067
-SphereCollider:
+--- !u!64 &5977524598772361843
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,12 +119,13 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 3.58
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4492053181958978585, guid: ccee9ad327f656640ab1bf19f91ba9a7, type: 3}
 --- !u!4 &3384166778634924121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6110536800543132278, guid: ccee9ad327f656640ab1bf19f91ba9a7, type: 3}
