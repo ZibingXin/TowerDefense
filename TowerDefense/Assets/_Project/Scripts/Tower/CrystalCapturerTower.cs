@@ -1,34 +1,48 @@
+using System.Collections;
 using UnityEngine;
 
 namespace DoomsDayDefense
 {
-    public enum CrystalType
-    {
-        Red,
-        Blue,
-        Green
-    }
+    
     public class CrystalCapturerTower : MonoBehaviour
     {
-        private float cooldown = 3f;
-        private float timer;
-
+        [Header("Settings")]
+        [SerializeField] private float cooldown = 3f;
         [SerializeField] private int captureAmount = 10;
-        [SerializeField] private CrystalType crystalType;
+        public CrystalType crystalType;
 
-        private void Update()
+        private bool isInitialized = false;
+
+        public void Initialize(CrystalType ct)
         {
-            timer += Time.deltaTime;
-            if (timer >= cooldown)
+            if (isInitialized) return;
+
+            crystalType = ct;
+            isInitialized = true;
+
+            StartCoroutine(CaptureRoutine());
+            Debug.Log("Initialized " + crystalType + " crystal capturer");
+        }
+
+        private IEnumerator CaptureRoutine()
+        {
+            while (true)
             {
-                timer = 0;
+                yield return new WaitForSeconds(cooldown);
                 CaptureCrystal();
             }
         }
 
         private void CaptureCrystal()
         {
+            if (GameManager.Instance == null)
+            {
+                Debug.LogError("GameManager is null");
+                return;
+            }
+
             GameManager.Instance.AddCrystal(crystalType, captureAmount);
+            Debug.Log("Captured " + captureAmount + " " + crystalType + " crystals\nCurrent: " + GameManager.Instance.redCrystals);
         }
 
     }
