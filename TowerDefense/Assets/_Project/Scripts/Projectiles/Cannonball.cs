@@ -36,7 +36,7 @@ namespace DoomsDayDefense
 
         void Fire()
         {
-            Vector3 currentPosition = startPosition + initialVelocity * timeSinceLaunch + 0.5f * Physics.gravity * timeSinceLaunch * timeSinceLaunch;
+            Vector3 currentPosition = startPosition + initialVelocity * timeSinceLaunch + 1.0f * Physics.gravity * timeSinceLaunch * timeSinceLaunch;
             transform.position = currentPosition;
 
             if (Vector3.Distance(transform.position, target.position) < 0.1f)

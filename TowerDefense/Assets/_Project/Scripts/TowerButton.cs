@@ -33,6 +33,8 @@ namespace DoomsDayDefense
 
         public void SelectArcherTower() => BuildManager.Instance.SelectTower(0);
         public void SelectCatapultTower() => BuildManager.Instance.SelectTower(1);
+        public void SelectMechineGunTower() => BuildManager.Instance.SelectTower(2);
+        public void SelectCannonTower() => BuildManager.Instance.SelectTower(3);
 
     }
 }

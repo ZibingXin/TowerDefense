@@ -7,9 +7,9 @@ namespace DoomsDayDefense
     {
         public static GameManager Instance;
 
-        [SerializeField] private int startingGold = 50;
+        [SerializeField] private int startingGold = 100;
         [SerializeField] private int startingHealth = 100;
-        //[SerializeField] private int startingWave = 1;
+
         public int currentGold;
         public int currentHealth;
 
@@ -18,6 +18,9 @@ namespace DoomsDayDefense
         public int greenCrystals;
 
         [SerializeField] private UIManager uiManager;
+
+        private int NumberOfEnemy;
+        private int EnemyKilled;
 
         public int CurrentGold
         {
@@ -36,10 +39,16 @@ namespace DoomsDayDefense
             if (Instance == null) Instance = this;
             CurrentGold = startingGold;
             currentHealth = startingHealth;
+            EnemyKilled = 0;
+            GetNumberOfEnemy();
         }
 
         private void Update()
         {
+            if (EnemyKilled >= NumberOfEnemy)
+            {
+                uiManager.ShowWinMenu();
+            }
             if (currentHealth <= 0)
             {
                 //Time.timeScale = 0;
@@ -57,11 +66,13 @@ namespace DoomsDayDefense
         public void AddGold(int amount)
         {
             CurrentGold += amount;
+            EnemyKilled++;
         }
 
         public void HitBase(int damage)
         {
             currentHealth -= damage;
+            EnemyKilled++;
         }
 
         public void AddCrystal(CrystalType ct, int n)
@@ -81,6 +92,13 @@ namespace DoomsDayDefense
                     if (greenCrystals > 200) greenCrystals = 200;
                     break;
             }
+        }
+
+        private void GetNumberOfEnemy()
+        {
+            GameObject waveSpawner = GameObject.Find("WaveSpawner");
+            WaveSpawner waveSpawnerScript = waveSpawner.GetComponent<WaveSpawner>();
+            NumberOfEnemy = waveSpawnerScript.GetNumberOfEnemy();
         }
 
     }

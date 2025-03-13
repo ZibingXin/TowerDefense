@@ -79,5 +79,15 @@ namespace DoomsDayDefense
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
             Enemy enemyScript = enemy.GetComponent<Enemy>();
         }
+
+        public int GetNumberOfEnemy()
+        {
+            int result = 0;
+            foreach (Wave wave in waves)
+            {
+                result += wave.count;
+            }
+            return result;
+        }
     }
 }

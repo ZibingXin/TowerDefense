@@ -54,10 +54,14 @@ namespace DoomsDayDefense
                 fireCountdown -= Time.deltaTime;
             }
 
-            if (towerUIRoot.activeSelf && Input.GetMouseButtonDown(1))
+            if (towerUIRoot.activeSelf)
             {
-                AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
-                CloseTowerUI();
+                towerUIRoot.transform.rotation = Quaternion.Euler(0f, -transform.rotation.y, 0f);
+                if (Input.GetMouseButtonDown(1))
+                {
+                    AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+                    CloseTowerUI();
+                }
             }
         }
 
@@ -117,13 +121,15 @@ namespace DoomsDayDefense
 
         public void UpgradeTower()
         {
-            Debug.Log("Upgrade Tower");
-            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
-            level++;
-            range += 1f;
-            fireRate += 0.5f;
-            towerInfoText.text = TowerStats;
-            CloseTowerUI();
+            if (GameManager.Instance.PurchaseTower(50) && level < 3)
+            {
+                AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+                level++;
+                range += 1f;
+                fireRate += 0.5f;
+                towerInfoText.text = TowerStats;
+                CloseTowerUI();
+            }
         }
 
         public virtual void SellTower()

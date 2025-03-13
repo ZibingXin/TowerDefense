@@ -340,7 +340,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199604396
 MonoBehaviour:
@@ -1038,7 +1038,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1801583196}
         m_TargetAssemblyTypeName: DoomsDayDefense.AudioManager, Assembly-CSharp
         m_MethodName: SetSFXVolume
-        m_Mode: 4
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2191,7 +2191,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1801583196}
         m_TargetAssemblyTypeName: DoomsDayDefense.AudioManager, Assembly-CSharp
         m_MethodName: SetMusicVolume
-        m_Mode: 4
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3330,7 +3330,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_SizeDelta: {x: 60, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146160192
 MonoBehaviour:
@@ -3425,11 +3425,19 @@ PrefabInstance:
     - target: {fileID: 3077749174063219282, guid: 6f9d6f84f5a34d545a42d5dd75ae1876, type: 3}
       propertyPath: sfxSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 737956788}
     - target: {fileID: 3077749174063219282, guid: 6f9d6f84f5a34d545a42d5dd75ae1876, type: 3}
       propertyPath: musicSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1660812768}
+    - target: {fileID: 3268088577270885809, guid: 6f9d6f84f5a34d545a42d5dd75ae1876, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 335f92055a2e5474d81c1550003cdfb5, type: 3}
+    - target: {fileID: 3268088577270885809, guid: 6f9d6f84f5a34d545a42d5dd75ae1876, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 335f92055a2e5474d81c1550003cdfb5, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

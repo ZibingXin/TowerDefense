@@ -10,6 +10,9 @@ namespace DoomsDayDefense
 
         public GameObject pauseMenu;
         public GameObject gameOverMenu;
+        public GameObject winMenu;
+        public GameObject canvasUI;
+
         public GameObject healthText;
         public GameObject goldText;
         public GameObject redCrystalText;
@@ -23,6 +26,11 @@ namespace DoomsDayDefense
             {
                 Instance = this;
             }
+
+            pauseMenu.SetActive(false);
+            gameOverMenu.SetActive(false);
+            winMenu.SetActive(false);
+            canvasUI.SetActive(true);
         }
         private void Update()
         {
@@ -50,6 +58,7 @@ namespace DoomsDayDefense
         {
             AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             pauseMenu.SetActive(true);
+            canvasUI.SetActive(false);
             Time.timeScale = 0;
         }
 
@@ -57,12 +66,21 @@ namespace DoomsDayDefense
         {
             AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             pauseMenu.SetActive(false);
+            canvasUI.SetActive(true);
             Time.timeScale = 1;
         }
 
         public void ShowGameOverMenu()
         {
             gameOverMenu.SetActive(true);
+            canvasUI.SetActive(false);
+            Time.timeScale = 0;
+        }
+
+        public void ShowWinMenu()
+        {
+            winMenu.SetActive(true);
+            canvasUI.SetActive(false);
             Time.timeScale = 0;
         }
 
@@ -73,6 +91,5 @@ namespace DoomsDayDefense
             SceneManager.LoadScene(0);
         }
 
-        
     }
 }

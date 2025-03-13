@@ -47,8 +47,8 @@ namespace DoomsDayDefense
             musicSource.outputAudioMixerGroup = musicGroup;
             sfxSource.outputAudioMixerGroup = sfxGroup;
 
-            SetMusicVolume(PlayerPrefs.GetFloat("MusicVol", 1f));
-            SetSFXVolume(PlayerPrefs.GetFloat("SFXVol", 1f));
+            // SetMusicVolume(PlayerPrefs.GetFloat("MusicVol", 1f));
+            // SetSFXVolume(PlayerPrefs.GetFloat("SFXVol", 1f));
         }
 
         public void PlayMusic(AudioClip musicClip)
@@ -71,14 +71,16 @@ namespace DoomsDayDefense
             AudioSource.PlayClipAtPoint(data.clip, pos);
         }
 
-        public void SetMusicVolume(float volume)
+        public void SetMusicVolume()
         {
+            float volume = musicSlider.value;
             audioMixer.SetFloat("MusicVol", VolumeToDB(volume));
             PlayerPrefs.SetFloat("MusicVol", volume);
         }
 
-        public void SetSFXVolume(float volume)
+        public void SetSFXVolume()
         {
+            float volume = sfxSlider.value;
             audioMixer.SetFloat("SFXVol", VolumeToDB(volume));
             PlayerPrefs.SetFloat("SFXVol", volume);
         }
