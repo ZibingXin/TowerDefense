@@ -1,3 +1,13 @@
+/* File Name: WaveSpawner.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Wave class to store the information of each wave.
+ * Spawn the enemies in the wave.
+ * 
+ */
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,13 +34,11 @@ namespace DoomsDayDefense
 
         private int currentWaveIndex = -1;
         private bool isSpawning = false;
-        //private bool wavesStarted = false;
 
         public void StartWaves()
         {
             if (!isSpawning && currentWaveIndex < waves.Count - 1)
             {
-                //wavesStarted = true;
                 StartNextWave();
             }
         }

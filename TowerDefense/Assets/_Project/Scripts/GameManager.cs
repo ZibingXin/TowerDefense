@@ -1,3 +1,12 @@
+/* File Name: GameManager.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the game state.
+ * 
+ */
+
 using System;
 using UnityEngine;
 

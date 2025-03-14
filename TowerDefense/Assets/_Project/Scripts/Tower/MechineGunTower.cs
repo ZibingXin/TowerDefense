@@ -1,3 +1,12 @@
+/* File Name: MachineGunTower.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Machine gun tower class that inherits from the TowerBase class.
+ * 
+ */
+
 using System.Collections;
 using UnityEngine;
 
@@ -5,16 +14,9 @@ namespace DoomsDayDefense
 {
     public class MachineGunTower : TowerBase
     {
-        //public new int buildCost = 50;
-
         [Header("Machine Gun Settings")]
         public int burstCount = 5;
         public float burstInterval = 0.1f;
-
-        //protected override IEnumerator AttackRoutine()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
 
         protected override void Shoot()
         {

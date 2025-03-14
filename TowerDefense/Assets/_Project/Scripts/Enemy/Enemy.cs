@@ -1,6 +1,14 @@
+/* File Name: Enemy.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manages the enemy's health, speed, and pathfinding.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 namespace DoomsDayDefense
 {

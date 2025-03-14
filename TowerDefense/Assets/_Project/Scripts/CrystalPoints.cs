@@ -1,3 +1,12 @@
+/* File Name: CrystalPoints.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Enumerate the crystal type and manage the crystal points.
+ * 
+ */
+
 using UnityEngine;
 
 namespace DoomsDayDefense

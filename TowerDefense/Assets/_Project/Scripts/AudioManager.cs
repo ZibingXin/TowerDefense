@@ -1,3 +1,12 @@
+/* File Name: AudioManager.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the audio settings.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -46,9 +55,6 @@ namespace DoomsDayDefense
 
             musicSource.outputAudioMixerGroup = musicGroup;
             sfxSource.outputAudioMixerGroup = sfxGroup;
-
-            // SetMusicVolume(PlayerPrefs.GetFloat("MusicVol", 1f));
-            // SetSFXVolume(PlayerPrefs.GetFloat("SFXVol", 1f));
         }
 
         public void PlayMusic(AudioClip musicClip)

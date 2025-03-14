@@ -1,3 +1,13 @@
+/* File Name: UIManager.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the UI elements in the game.
+ * 
+ */
+
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

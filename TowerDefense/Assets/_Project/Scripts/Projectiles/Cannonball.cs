@@ -1,3 +1,12 @@
+/* File Name: Cannonball.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Cannonball class manages the cannonball projectile.
+ * 
+ */
+
 using System;
 using UnityEngine;
 

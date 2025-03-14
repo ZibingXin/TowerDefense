@@ -1,3 +1,12 @@
+/* File Name: CrystalTowerButton.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the crystal tower button.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 

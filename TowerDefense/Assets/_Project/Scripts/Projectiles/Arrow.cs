@@ -1,3 +1,12 @@
+/* File Name: Arrow.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Arrow class makes the arrow move towards the target enemy.
+ * 
+ */
+
 using UnityEngine;
 
 namespace DoomsDayDefense

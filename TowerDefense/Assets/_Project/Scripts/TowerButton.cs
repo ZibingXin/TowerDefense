@@ -1,3 +1,12 @@
+/* File Name: TowerButton.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the tower build button.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +31,6 @@ namespace DoomsDayDefense
                     GetComponent<Button>().interactable = GameManager.Instance.blueCrystals >= 50;
                     break;
             }
-            //GetComponent<Button>().interactable = GameManager.Instance.currentGold >= 50;
         }
 
         public void OnClick()

@@ -1,20 +1,21 @@
-using System.Collections;
+/* File Name: CatapultTower.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Catapult tower class that inherits from the TowerBase class.
+ * 
+ */
+
 using UnityEngine;
 
 namespace DoomsDayDefense
 {
     public class CatapultTower : TowerBase
     {
-        //public new int buildCost = 50;
-
         [Header("Catapult Settings")]
         public float explosionRadius = 3f;
         public ParticleSystem explosionEffect;
-
-        //protected override IEnumerator AttackRoutine()
-        //{
-        //    throw new System.NotImplementedException();
-        //}
 
         protected override void Shoot()
         {

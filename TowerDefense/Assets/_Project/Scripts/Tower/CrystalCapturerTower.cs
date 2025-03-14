@@ -1,3 +1,12 @@
+/* File Name: CrystalCapturerTower.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Crystal capturer tower class.
+ * 
+ */
+
 using System.Collections;
 using UnityEngine;
 

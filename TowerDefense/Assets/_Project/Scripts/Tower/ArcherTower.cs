@@ -1,4 +1,12 @@
-using System.Collections;
+/* File Name: ArcherTower.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Archer tower class that inherits from the TowerBase class.
+ * 
+ */
+
 using UnityEngine;
 
 namespace DoomsDayDefense

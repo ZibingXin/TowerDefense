@@ -1,6 +1,13 @@
-using System.Collections;
+/* File Name: TowerBase.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Tower base class that contains the common attributes and methods for all tower types.
+ * 
+ */
+
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace DoomsDayDefense

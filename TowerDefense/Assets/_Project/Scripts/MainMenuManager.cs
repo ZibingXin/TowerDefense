@@ -1,3 +1,12 @@
+/* File Name: MainMenuManager.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the main menu functions.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

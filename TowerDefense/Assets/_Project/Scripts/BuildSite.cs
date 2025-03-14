@@ -1,6 +1,13 @@
-using Unity.VisualScripting;
+/* File Name: BuildSite.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the build site for the tower.
+ * 
+ */
+
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace DoomsDayDefense
 {
@@ -25,12 +32,6 @@ namespace DoomsDayDefense
             BuildManager.Instance?.UnregisterBuildSite(this);
         }
 
-        //public void OnMouseEnter()
-        //{
-        //    //SetHightlight(true);
-        //    GetComponent<MeshRenderer>().material = highlightMaterial;
-        //}
-
         public void SetHightlight(bool state)
         {
             if (!IsOccupied)
@@ -41,15 +42,13 @@ namespace DoomsDayDefense
 
         private void OnMouseDown()
         {
-            //if (EventSystem.current.IsPointerOverGameObject()) return;
-
             if (!IsOccupied && BuildManager.Instance.IsBuilding)
             {
                 BuildManager.Instance.BuildTowerAt(this);
             }
-            else if (IsOccupied)
+            else
             {
-                //TowerUI.Instance.ShowTowerInfo(currentTower);
+                return;
             }
         }
 

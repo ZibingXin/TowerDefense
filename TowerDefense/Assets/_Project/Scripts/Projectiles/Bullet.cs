@@ -1,3 +1,12 @@
+/* File Name: Bullet.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Bullet class manages the bullet projectile.
+ * 
+ */
+
 using UnityEngine;
 
 namespace DoomsDayDefense

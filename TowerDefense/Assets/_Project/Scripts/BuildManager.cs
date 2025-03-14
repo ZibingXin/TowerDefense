@@ -1,3 +1,12 @@
+/* File Name: BuildManager.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Manage the tower building.
+ * 
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
 

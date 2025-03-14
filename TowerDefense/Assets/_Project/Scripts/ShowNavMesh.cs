@@ -1,3 +1,12 @@
+/* File Name: ShowNavMesh.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * Create a mesh to show the NavMesh in MiniMap Camera.
+ * 
+ */
+
 using UnityEngine;
 using UnityEngine.AI;
 

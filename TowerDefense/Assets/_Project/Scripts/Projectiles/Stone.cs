@@ -1,3 +1,12 @@
+/* File Name: Stone.cs
+ * Author: Zibing Xin
+ * Student Number: 301427981
+ * 
+ * Description:
+ * manages the stone projectile
+ * 
+ */
+
 using System;
 using UnityEngine;
 
