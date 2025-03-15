@@ -19,6 +19,16 @@ namespace DoomsDayDefense
         private void Update()
         {
             GetComponent<Button>().interactable = GameManager.Instance.currentGold >= 50;
+            // change button color when it is not interactable
+            if (!GetComponent<Button>().interactable)
+            {
+                GetComponent<Image>().color = Color.gray;
+            }
+            else
+            {
+                GetComponent<Image>().color = Color.white;
+            }
+
             if (Input.GetMouseButtonDown(1))
             {
                 foreach (var cp in crystalPoints)

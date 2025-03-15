@@ -103,6 +103,22 @@ namespace DoomsDayDefense
             }
         }
 
+        public void DeductCrystal(CrystalType ct, int n)
+        {
+            switch (ct)
+            {
+                case CrystalType.Red:
+                    if (redCrystals >= n) redCrystals -= n;
+                    break;
+                case CrystalType.Blue:
+                    if (blueCrystals >= n) blueCrystals -= n;
+                    break;
+                case CrystalType.Green:
+                    if (greenCrystals >= n) greenCrystals -= n;
+                    break;
+            }
+        }
+
         private void GetNumberOfEnemy()
         {
             GameObject waveSpawner = GameObject.Find("WaveSpawner");

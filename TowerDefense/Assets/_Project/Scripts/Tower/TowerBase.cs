@@ -143,18 +143,7 @@ namespace DoomsDayDefense
         {
             AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
             CloseTowerUI();
-            switch (crystalType)
-            {
-                case CrystalType.Red:
-                    GameManager.Instance.redCrystals += SellValue;
-                    break;
-                case CrystalType.Blue:
-                    GameManager.Instance.blueCrystals += SellValue;
-                    break;
-                case CrystalType.Green:
-                    GameManager.Instance.greenCrystals += SellValue;
-                    break;
-            }
+            GameManager.Instance.AddCrystal(crystalType, SellValue);
             OnDestroyed?.Invoke();
             Destroy(gameObject);
         }

@@ -31,6 +31,15 @@ namespace DoomsDayDefense
                     GetComponent<Button>().interactable = GameManager.Instance.blueCrystals >= 50;
                     break;
             }
+            // change button color when it is not interactable
+            if (!GetComponent<Button>().interactable)
+            {
+                GetComponent<Image>().color = Color.gray;
+            }
+            else
+            {
+                GetComponent<Image>().color = Color.white;
+            }
         }
 
         public void OnClick()

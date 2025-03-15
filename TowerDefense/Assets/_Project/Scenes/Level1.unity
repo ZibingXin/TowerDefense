@@ -11177,8 +11177,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278232064
-  m_fontColor: {r: 0, g: 0.6415094, b: 0, a: 1}
+    rgba: 4289225984
+  m_fontColor: {r: 0, g: 0.39607844, b: 0.65882355, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -21575,12 +21575,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -26549,7 +26549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerIndex: 3
-  crystalType: 2
+  crystalType: 1
 --- !u!114 &1423091206
 MonoBehaviour:
   m_ObjectHideFlags: 0

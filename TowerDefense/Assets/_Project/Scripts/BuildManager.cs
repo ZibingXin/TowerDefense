@@ -61,6 +61,14 @@ namespace DoomsDayDefense
                 return;
             }
 
+            // get the crystal type and cost
+            CrystalType crystalType = towerBasePrefab.crystalType;
+            int cost = towerBasePrefab.buildCost;
+
+            // check balance and deduct the crystal
+            GameManager.Instance.DeductCrystal(crystalType, cost);
+
+
             // initial new tower
             Vector3 position = new(site.transform.position.x, site.transform.position.y + 0.2f, site.transform.position.z);
             GameObject newTower = Instantiate(selectedTower, position, Quaternion.identity);
@@ -75,23 +83,7 @@ namespace DoomsDayDefense
             // occupy the build site
             site.OccupySite(towerInstance);
 
-            // get the crystal type and cost
-            CrystalType crystalType = towerBasePrefab.crystalType;
-            int cost = towerBasePrefab.buildCost;
-
-            // deduct the crystal cost
-            switch (crystalType)
-            {
-                case CrystalType.Red:
-                    GameManager.Instance.redCrystals -= cost;
-                    break;
-                case CrystalType.Blue:
-                    GameManager.Instance.blueCrystals -= cost;
-                    break;
-                case CrystalType.Green:
-                    GameManager.Instance.greenCrystals -= cost;
-                    break;
-            }
+            
 
             Debug.Log("Tower built at " + site.transform.position);
 
