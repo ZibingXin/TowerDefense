@@ -57,11 +57,11 @@ namespace DoomsDayDefense
                 }
             }
 
-            healthText.GetComponent<TextMeshProUGUI>().text = "Health: " + GameManager.Instance.currentHealth;
-            goldText.GetComponent<TextMeshProUGUI>().text = "Gold: " + GameManager.Instance.currentGold;
-            redCrystalText.GetComponent<TextMeshProUGUI>().text = "Red: " + GameManager.Instance.redCrystals + "/200";
-            greenCrystalText.GetComponent<TextMeshProUGUI>().text = "Green: " + GameManager.Instance.greenCrystals + "/200";
-            blueCrystalText.GetComponent<TextMeshProUGUI>().text = "Blue: " + GameManager.Instance.blueCrystals + "/200";
+            healthText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.currentHealth;
+            goldText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.currentGold;
+            redCrystalText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.redCrystals + "/200";
+            greenCrystalText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.greenCrystals + "/200";
+            blueCrystalText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.blueCrystals + "/200";
         }
 
         public void ShowPauseMenu()
