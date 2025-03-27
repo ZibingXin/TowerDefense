@@ -8,10 +8,16 @@
  */
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DoomsDayDefense
 {
-    public class BuildSite : MonoBehaviour
+    public interface IInteractable
+    {
+        void OnTapped();
+    }
+
+    public class BuildSite : MonoBehaviour, IInteractable
     {
         [SerializeField] private Material highlightMaterial;
         private Material startMaterial;
@@ -51,7 +57,17 @@ namespace DoomsDayDefense
                 return;
             }
         }
-
+        public void OnTapped()
+        {
+            if (!IsOccupied && BuildManager.Instance.IsBuilding)
+            {
+                BuildManager.Instance.BuildTowerAt(this);
+            }
+            else
+            {
+                return;
+            }
+        }
         public void OccupySite(TowerBase tower)
         {
             currentTower = tower;
@@ -63,5 +79,7 @@ namespace DoomsDayDefense
         {
             currentTower = null;
         }
+
+        
     }
 }

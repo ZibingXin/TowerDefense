@@ -1,0 +1,54 @@
+{
+    "name": "MobileControls",
+    "maps": [
+        {
+            "name": "TouchControl",
+            "id": "78f42f49-b558-4b6b-b346-74a1ade30c84",
+            "actions": [
+                {
+                    "name": "TouchPress",
+                    "type": "Value",
+                    "id": "ea5a00bd-8056-478c-a81e-b23573e1996b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TouchPosition",
+                    "type": "Value",
+                    "id": "71cabb2e-62d1-4572-aef5-4e15fc8580ce",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3987a63d-6937-45de-92a1-7e2ff2f8fa51",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPress",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aafe985c-2790-4abf-9ec6-46522c0b4212",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -44,19 +44,6 @@ namespace DoomsDayDefense
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
-                if (pauseMenu.activeSelf)
-                {
-                    HidePauseMenu();
-                }
-                else
-                {
-                    ShowPauseMenu();
-                }
-            }
-
             healthText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.currentHealth;
             goldText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.currentGold;
             redCrystalText.GetComponent<TextMeshProUGUI>().text = " " + GameManager.Instance.redCrystals + "/200";

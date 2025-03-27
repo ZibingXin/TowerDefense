@@ -17,6 +17,9 @@ namespace DoomsDayDefense
         [SerializeField] private int towerIndex;
         [SerializeField] private CrystalType crystalType;
 
+        [SerializeField] private GameObject TowerBuild;
+        [SerializeField] private GameObject CancelBuild;
+
         private void Update()
         {
             switch (crystalType)
@@ -46,6 +49,17 @@ namespace DoomsDayDefense
         {
             AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             BuildManager.Instance.SelectTower(towerIndex);
+
+            TowerBuild.SetActive(false);
+            CancelBuild.SetActive(true);
+        }
+
+        public void OnCancel()
+        {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            BuildManager.Instance.ClearSelection();
+            TowerBuild.SetActive(true);
+            CancelBuild.SetActive(false);
         }
 
         public void SelectArcherTower() => BuildManager.Instance.SelectTower(0);

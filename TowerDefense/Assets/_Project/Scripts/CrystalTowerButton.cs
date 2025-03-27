@@ -8,6 +8,7 @@
  */
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace DoomsDayDefense
@@ -15,6 +16,9 @@ namespace DoomsDayDefense
     public class CrystalTowerButton : MonoBehaviour
     {
         public CrystalPoints[] crystalPoints;
+
+        [SerializeField] private GameObject CrystalButton;
+        [SerializeField] private GameObject CancelButton;
 
         private void Update()
         {
@@ -29,13 +33,6 @@ namespace DoomsDayDefense
                 GetComponent<Image>().color = Color.white;
             }
 
-            if (Input.GetMouseButtonDown(1))
-            {
-                foreach (var cp in crystalPoints)
-                {
-                    cp.UnToggleHighlight();
-                }
-            }
         }
         public void OnClick()
         {
@@ -43,6 +40,24 @@ namespace DoomsDayDefense
             {
                 cp.ToggleHighlight();
             }
+            CrystalButton.SetActive(false);
+            CancelButton.SetActive(true);
+        }
+
+        public void OnCancel()
+        {
+            foreach (var cp in crystalPoints)
+            {
+                cp.UnToggleHighlight();
+            }
+            CrystalButton.SetActive(true);
+            CancelButton.SetActive(false);
+        }
+
+        public void AfterBuild()
+        {
+            CrystalButton.SetActive(true);
+            CancelButton.SetActive(false);
         }
     }
 }

@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace DoomsDayDefense
 {
-    public abstract class TowerBase : MonoBehaviour
+    public abstract class TowerBase : MonoBehaviour, IInteractable
     {
         public event System.Action OnDestroyed;
 
@@ -64,12 +64,9 @@ namespace DoomsDayDefense
             if (towerUIRoot.activeSelf)
             {
                 towerUIRoot.transform.rotation = Quaternion.Euler(0f, -transform.rotation.y, 0f);
-                if (Input.GetMouseButtonDown(1))
-                {
-                    AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
-                    CloseTowerUI();
-                }
+                
             }
+
         }
 
 
@@ -114,7 +111,15 @@ namespace DoomsDayDefense
 
         protected virtual void Shoot() { }
 
+#if UNITY_EDITOR
         private void OnMouseDown()
+        {
+            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            towerUIRoot.SetActive(true);
+            towerInfoText.text = TowerStats;
+        }
+#endif
+        public void OnTapped()
         {
             AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
             towerUIRoot.SetActive(true);

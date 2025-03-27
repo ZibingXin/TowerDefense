@@ -34,13 +34,6 @@ namespace DoomsDayDefense
             }
         }
 
-        private void Update()
-        {
-            if (Input.GetMouseButtonDown(1))
-            {
-                ClearSelection();
-            }
-        }
 
         public void SelectTower(int configIndex)
         {
@@ -108,7 +101,7 @@ namespace DoomsDayDefense
             }
         }
 
-        private void ClearSelection()
+        public void ClearSelection()
         {
             selectedTower = null;
             ToggleBuildSitesHighlight(false);
