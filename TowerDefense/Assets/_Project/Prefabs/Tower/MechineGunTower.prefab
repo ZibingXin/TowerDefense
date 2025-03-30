@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d4a4d394dbdb640be78cfd0b9b0adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crystalType: 1
+  crystalType: 0
   buildCost: 50
   level: 1
   range: 3

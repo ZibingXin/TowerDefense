@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 namespace DoomsDayDefense
 {
@@ -36,7 +37,8 @@ namespace DoomsDayDefense
 
         public void LoadGame()
         {
-            // check if the file exists
+            SceneManager.LoadScene("Level1");
+            GameManager.Instance.Reset();
             if (!File.Exists(Application.persistentDataPath + "/saveData.json")) return;
             var saveData = new SaveData();
             var reader = new StreamReader(Application.persistentDataPath + "/saveData.json");
