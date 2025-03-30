@@ -22,6 +22,14 @@ namespace DoomsDayDefense
         {
             AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
             SceneManager.LoadScene("Level1");
+            GameManager.Instance.Reset();
+        }
+
+        public void OnLoadButtonClicked()
+        {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            SceneManager.LoadScene("Level1");
+            SaveGameManager.Instance().LoadGame();
         }
 
         public void OnSettingButtonClicked()

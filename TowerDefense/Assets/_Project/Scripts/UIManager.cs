@@ -88,5 +88,11 @@ namespace DoomsDayDefense
             SceneManager.LoadScene(0);
         }
 
+        public void SaveGame()
+        {
+            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            SaveGameManager.Instance().SaveGame();
+        }
+
     }
 }

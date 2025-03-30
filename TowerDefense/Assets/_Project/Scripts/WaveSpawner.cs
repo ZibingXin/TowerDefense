@@ -35,6 +35,16 @@ namespace DoomsDayDefense
         private int currentWaveIndex = -1;
         private bool isSpawning = false;
 
+        public static WaveSpawner Instance;
+
+        public void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+        }
+
         public void StartWaves()
         {
             if (!isSpawning && currentWaveIndex < waves.Count - 1)
@@ -96,6 +106,16 @@ namespace DoomsDayDefense
                 result += wave.count;
             }
             return result;
+        }
+
+        public int GetCurrentWaveIndex()
+        {
+            return currentWaveIndex;
+        }
+
+        public int SetCurrentWaveIndex(int index)
+        {
+            return currentWaveIndex = index;
         }
     }
 }

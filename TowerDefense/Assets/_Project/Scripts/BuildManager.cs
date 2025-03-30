@@ -16,7 +16,7 @@ namespace DoomsDayDefense
     {
         public static BuildManager Instance;
 
-        [SerializeField] private GameObject[] towers;
+        public GameObject[] towers;
         private GameObject selectedTower;
         public List<BuildSite> activeSites = new();
 
