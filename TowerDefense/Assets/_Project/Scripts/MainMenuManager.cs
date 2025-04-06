@@ -20,27 +20,26 @@ namespace DoomsDayDefense
         // mainmenu methods
         public void OnPlayButtonClicked()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
-            SceneManager.LoadScene("Level1");
-            GameManager.Instance.Reset();
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
+            GameManager.Instance.StartGame();
         }
 
         public void OnLoadButtonClicked()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             //SceneManager.LoadScene("Level1");
             SaveGameManager.Instance().LoadGame();
         }
 
         public void OnSettingButtonClicked()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             settingPanel.SetActive(true);
         }
 
         public void OnQuitButtonClicked()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             Application.Quit();
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -50,7 +49,7 @@ namespace DoomsDayDefense
         // setting panel methods
         public void OnBackButtonClicked()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             settingPanel.SetActive(false);
         }
 

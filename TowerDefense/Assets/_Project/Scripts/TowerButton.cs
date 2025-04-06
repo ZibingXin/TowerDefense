@@ -47,7 +47,7 @@ namespace DoomsDayDefense
 
         public void OnClick()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             BuildManager.Instance.SelectTower(towerIndex);
 
             TowerBuild.SetActive(false);
@@ -56,7 +56,7 @@ namespace DoomsDayDefense
 
         public void OnCancel()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             BuildManager.Instance.ClearSelection();
             TowerBuild.SetActive(true);
             CancelBuild.SetActive(false);

@@ -4,13 +4,16 @@ namespace DoomsDayDefense
 {
     public enum GameEvent
     {
-        GameStart,
+        ButtonClicked,
         GameOver,
+        GameWin,
         WaveStart,
         WaveEnd,
         EnemySpawned,
         EnemyDefeated,
+        EnemyHit,
         TowerPlaced,
+        TowerAttacked,
         TowerUpgraded,
         TowerSold,
         BaseDamaged

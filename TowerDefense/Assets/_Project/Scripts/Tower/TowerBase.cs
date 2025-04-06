@@ -55,7 +55,7 @@ namespace DoomsDayDefense
                 if (fireCountdown <= 0f)
                 {
                     Shoot();
-                    AudioManager.Instance.PlaySFX("TowerAttack", transform.position);
+                    AudioManager.Instance.PlaySound(GameEvent.TowerAttacked, transform.position);
                     fireCountdown = 1f / fireRate;
                 }
                 fireCountdown -= Time.deltaTime;
@@ -114,14 +114,14 @@ namespace DoomsDayDefense
 #if UNITY_EDITOR
         private void OnMouseDown()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             towerUIRoot.SetActive(true);
             towerInfoText.text = TowerStats;
         }
 #endif
         public void OnTapped()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             towerUIRoot.SetActive(true);
             towerInfoText.text = TowerStats;
         }
@@ -135,7 +135,7 @@ namespace DoomsDayDefense
         {
             if (GameManager.Instance.PurchaseTower(50) && level < 3)
             {
-                AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+                AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
                 level++;
                 range += 1f;
                 fireRate += 0.5f;
@@ -146,7 +146,7 @@ namespace DoomsDayDefense
 
         public virtual void SellTower()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", transform.position);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             CloseTowerUI();
             GameManager.Instance.AddCrystal(crystalType, SellValue);
             OnDestroyed?.Invoke();

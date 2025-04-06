@@ -9,6 +9,8 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.SceneManagement;
 
 namespace DoomsDayDefense
 {
@@ -26,10 +28,11 @@ namespace DoomsDayDefense
         public int blueCrystals;
         public int greenCrystals;
 
-        [SerializeField] private UIManager uiManager;
+        public UIManager uiManager;
+        public WaveSpawner waveSpawnerScript;
 
-        private int NumberOfEnemy;
-        private int EnemyKilled;
+        private int NumberOfEnemy = int.MaxValue;
+        private int EnemyKilled = -1;
 
         public int CurrentGold
         {
@@ -43,9 +46,36 @@ namespace DoomsDayDefense
 
         public event Action<int> OnGoldChanged;
 
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.name == "Level1")
+            {
+                StartCoroutine(LinkToComponents());
+            }
+        }
+
+        private System.Collections.IEnumerator LinkToComponents()
+        {
+            yield return null;
+            uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+            waveSpawnerScript = GameObject.Find("WaveSpawner").GetComponent<WaveSpawner>();
+            Reset();
+            uiManager.Instance.ShowNotice("Welcome!");
+        }
+
         private void Awake()
         {
-            if (Instance == null) Instance = this;
+            if (Instance == null) { Instance = this; } else { Destroy(gameObject); }
             DontDestroyOnLoad(gameObject);
             Reset();
         }
@@ -55,20 +85,30 @@ namespace DoomsDayDefense
             CurrentGold = startingGold;
             currentHealth = startingHealth;
             EnemyKilled = 0;
-            GetNumberOfEnemy();
+            if (waveSpawnerScript != null)
+            {
+                GetNumberOfEnemy();
+            }
+        }
+
+        public void StartGame()
+        {
+            SceneManager.LoadScene("Level1");
         }
 
         private void Update()
         {
             if (EnemyKilled >= NumberOfEnemy)
             {
-                uiManager.ShowWinMenu();
+                uiManager.Instance.ShowWinMenu();
             }
             if (currentHealth <= 0)
             {
                 //Time.timeScale = 0;
-                uiManager.ShowGameOverMenu();
+                uiManager.Instance.ShowGameOverMenu();
             }
+            if (EnemyKilled == 1) { uiManager.Instance.ShowNotice("First enemy killed!"); }
+            if (EnemyKilled == 10) { uiManager.Instance.ShowNotice("First wave cleaned!"); }
         }
 
         public bool PurchaseTower(int cost)
@@ -127,8 +167,8 @@ namespace DoomsDayDefense
 
         private void GetNumberOfEnemy()
         {
-            GameObject waveSpawner = GameObject.Find("WaveSpawner");
-            WaveSpawner waveSpawnerScript = waveSpawner.GetComponent<WaveSpawner>();
+            //GameObject waveSpawner = GameObject.Find("WaveSpawner");
+            //WaveSpawner waveSpawnerScript = waveSpawner.GetComponent<WaveSpawner>();
             NumberOfEnemy = waveSpawnerScript.GetNumberOfEnemy();
         }
 

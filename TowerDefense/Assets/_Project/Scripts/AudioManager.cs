@@ -57,44 +57,33 @@ namespace DoomsDayDefense
             sfxSource.outputAudioMixerGroup = sfxGroup;
         }
 
-        private void PlaySound(GameEvent gameEvent, object data)
+        private void OnEnable()
+        {
+            EventManager.Instance.OnGameEvent += PlaySound;
+        }
+
+        private void OnDisable()
+        {
+            EventManager.Instance.OnGameEvent -= PlaySound;
+        }
+
+        public void PlaySound(GameEvent gameEvent, object data = null)
         {
             switch (gameEvent)
             {
-                case GameEvent.GameStart:
-                    PlayMusic((AudioClip)data);
+                case GameEvent.ButtonClicked:
+                    PlaySFX("ButtonClick", Vector3.zero);
                     break;
-                case GameEvent.GameOver:
-                    PlaySFX("GameOver", Vector3.zero);
+                case GameEvent.EnemyHit:
+                    PlaySFX("EnemyHit", (Vector3)data);
                     break;
-                case GameEvent.WaveStart:
-                    PlaySFX("WaveStart", Vector3.zero);
-                    break;
-                case GameEvent.WaveEnd:
-                    PlaySFX("WaveEnd", Vector3.zero);
-                    break;
-                case GameEvent.EnemySpawned:
-                    PlaySFX("EnemySpawned", (Vector3)data);
-                    break;
-                case GameEvent.EnemyDefeated:
-                    PlaySFX("EnemyDefeated", (Vector3)data);
-                    break;
-                case GameEvent.TowerPlaced:
-                    PlaySFX("TowerPlaced", (Vector3)data);
-                    break;
-                case GameEvent.TowerUpgraded:
-                    PlaySFX("TowerUpgraded", (Vector3)data);
-                    break;
-                case GameEvent.TowerSold:
-                    PlaySFX("TowerSold", (Vector3)data);
-                    break;
-                case GameEvent.BaseDamaged:
-                    PlaySFX("BaseDamaged", (Vector3)data);
+                case GameEvent.TowerAttacked:
+                    PlaySFX("TowerAttacked", (Vector3)data);
                     break;
             }
         }
 
-        public void PlayMusic(AudioClip musicClip)
+        private void PlayMusic(AudioClip musicClip)
         {
             if (musicSource.clip == musicClip && musicSource.isPlaying) return;
 
@@ -102,7 +91,7 @@ namespace DoomsDayDefense
             musicSource.Play();
         }
 
-        public void PlaySFX(string sfxName, Vector3 pos)
+        private void PlaySFX(string sfxName, Vector3 pos)
         {
             SFXData data = System.Array.Find(sfxLibrary, x => x.name == sfxName);
             if (data == null)

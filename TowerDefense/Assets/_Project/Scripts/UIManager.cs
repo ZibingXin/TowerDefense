@@ -29,12 +29,19 @@ namespace DoomsDayDefense
         public GameObject greenCrystalText;
         public GameObject blueCrystalText;
 
+        public GameObject Notice;
+        public GameObject noticeText;
+
 
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
             }
 
             pauseMenu.SetActive(false);
@@ -53,7 +60,7 @@ namespace DoomsDayDefense
 
         public void ShowPauseMenu()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             pauseMenu.SetActive(true);
             canvasUI.SetActive(false);
             Time.timeScale = 0;
@@ -61,7 +68,7 @@ namespace DoomsDayDefense
 
         public void HidePauseMenu()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             pauseMenu.SetActive(false);
             canvasUI.SetActive(true);
             Time.timeScale = 1;
@@ -83,16 +90,29 @@ namespace DoomsDayDefense
 
         public void GoBackToMainMenu()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             if (Time.timeScale == 0) Time.timeScale = 1;
             SceneManager.LoadScene(0);
         }
 
         public void SaveGame()
         {
-            AudioManager.Instance.PlaySFX("ButtonClick", Vector3.zero);
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             SaveGameManager.Instance().SaveGame();
         }
 
+        public void ShowNotice(string message)
+        {
+            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
+            Notice.SetActive(true);
+            noticeText.GetComponent<TextMeshProUGUI>().text = message;
+            Invoke(nameof(HideNotice), 2.5f);
+        }
+
+        public void HideNotice()
+        {
+            Notice.SetActive(false);
+            noticeText.GetComponent<TextMeshProUGUI>().text = "";
+        }
     }
 }
