@@ -57,6 +57,43 @@ namespace DoomsDayDefense
             sfxSource.outputAudioMixerGroup = sfxGroup;
         }
 
+        private void PlaySound(GameEvent gameEvent, object data)
+        {
+            switch (gameEvent)
+            {
+                case GameEvent.GameStart:
+                    PlayMusic((AudioClip)data);
+                    break;
+                case GameEvent.GameOver:
+                    PlaySFX("GameOver", Vector3.zero);
+                    break;
+                case GameEvent.WaveStart:
+                    PlaySFX("WaveStart", Vector3.zero);
+                    break;
+                case GameEvent.WaveEnd:
+                    PlaySFX("WaveEnd", Vector3.zero);
+                    break;
+                case GameEvent.EnemySpawned:
+                    PlaySFX("EnemySpawned", (Vector3)data);
+                    break;
+                case GameEvent.EnemyDefeated:
+                    PlaySFX("EnemyDefeated", (Vector3)data);
+                    break;
+                case GameEvent.TowerPlaced:
+                    PlaySFX("TowerPlaced", (Vector3)data);
+                    break;
+                case GameEvent.TowerUpgraded:
+                    PlaySFX("TowerUpgraded", (Vector3)data);
+                    break;
+                case GameEvent.TowerSold:
+                    PlaySFX("TowerSold", (Vector3)data);
+                    break;
+                case GameEvent.BaseDamaged:
+                    PlaySFX("BaseDamaged", (Vector3)data);
+                    break;
+            }
+        }
+
         public void PlayMusic(AudioClip musicClip)
         {
             if (musicSource.clip == musicClip && musicSource.isPlaying) return;
