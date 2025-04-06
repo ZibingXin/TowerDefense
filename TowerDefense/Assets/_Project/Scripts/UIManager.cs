@@ -103,7 +103,6 @@ namespace DoomsDayDefense
 
         public void ShowNotice(string message)
         {
-            AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
             Notice.SetActive(true);
             noticeText.GetComponent<TextMeshProUGUI>().text = message;
             Invoke(nameof(HideNotice), 2.5f);
