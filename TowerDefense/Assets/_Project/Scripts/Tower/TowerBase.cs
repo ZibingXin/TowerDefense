@@ -33,6 +33,8 @@ namespace DoomsDayDefense
         [SerializeField] private GameObject towerUIRoot;
         [SerializeField] private TextMeshProUGUI towerInfoText;
 
+        private bool isTutorialBuild1 = true;
+
         public virtual string TowerStats => $"Level: {level}, Range: {range}, Fire Rate: {fireRate}";
         public int SellValue => Mathf.FloorToInt(buildCost * 0.6f);
 
@@ -98,6 +100,8 @@ namespace DoomsDayDefense
                 target = null;
             }
 
+            
+
         }
 
         protected void AimTarget(Vector3 position)
@@ -135,6 +139,11 @@ namespace DoomsDayDefense
         {
             if (GameManager.Instance.PurchaseTower(50) && level < 3)
             {
+                if (isTutorialBuild1 && target != null)
+                {
+                    TutorialUI.Instance.NextTutorial();
+                    isTutorialBuild1 = false;
+                }
                 AudioManager.Instance.PlaySound(GameEvent.ButtonClicked);
                 level++;
                 range += 1f;
@@ -142,6 +151,8 @@ namespace DoomsDayDefense
                 towerInfoText.text = TowerStats;
                 CloseTowerUI();
             }
+
+            
         }
 
         public virtual void SellTower()

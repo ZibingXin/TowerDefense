@@ -172,6 +172,11 @@ namespace DoomsDayDefense
             NumberOfEnemy = waveSpawnerScript.GetNumberOfEnemy();
         }
 
+        public int GetEnemyKills()
+        {
+            return EnemyKilled;
+        }
+
         public int[] GetSaveInts()
         {
             return new[] { currentGold, currentHealth, redCrystals, blueCrystals, greenCrystals };

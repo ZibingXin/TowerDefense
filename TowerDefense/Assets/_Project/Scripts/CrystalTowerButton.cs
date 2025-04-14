@@ -54,10 +54,5 @@ namespace DoomsDayDefense
             CancelButton.SetActive(false);
         }
 
-        public void AfterBuild()
-        {
-            CrystalButton.SetActive(true);
-            CancelButton.SetActive(false);
-        }
     }
 }

@@ -26,6 +26,7 @@ namespace DoomsDayDefense
         public Material highlightEffect;
         private bool isActive = false;
 
+        private bool tutorialBuild = true;
 
         private void OnMouseDown()
         {
@@ -63,6 +64,11 @@ namespace DoomsDayDefense
 
         private void BuildTower()
         {
+            if (tutorialBuild && TutorialUI.Instance.currentIndex == 0 )
+            {
+                TutorialUI.Instance.NextTutorial();
+                tutorialBuild = false;
+            }
             //Destroy(gameObject);
             gameObject.SetActive(false);
             GameObject tower = Instantiate(crystalTowerPrefab, transform.position, Quaternion.identity);
@@ -70,9 +76,9 @@ namespace DoomsDayDefense
             towerScript.Initialize(crystalType);
             UnToggleHighlight();
 
-            // call the AfterBuild method in CrystalTowerButton
-            FindFirstObjectByType<CrystalTowerButton>().AfterBuild();
+            FindFirstObjectByType<CrystalTowerButton>().OnCancel();
 
+            
         }
 
 

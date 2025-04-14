@@ -37,6 +37,8 @@ namespace DoomsDayDefense
 
         public static WaveSpawner Instance;
 
+        private bool isTutorialWave1 = true;
+
         public void Awake()
         {
             if (Instance == null)
@@ -50,6 +52,11 @@ namespace DoomsDayDefense
             if (!isSpawning && currentWaveIndex < waves.Count - 1)
             {
                 StartNextWave();
+                if (isTutorialWave1)
+                {
+                    TutorialUI.Instance.NextTutorial();
+                    isTutorialWave1 = false;
+                }
             }
         }
 

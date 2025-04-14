@@ -1,26 +1,72 @@
+using NUnit.Framework;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DoomsDayDefense
 {
     public class TutorialUI : MonoBehaviour
     {
-        [SerializeField] GameObject pointerPrefab;
+        public static TutorialUI Instance;
+
         [SerializeField] GameObject tutorialPanel;
+        [SerializeField] GameObject tutorialText;
+        //[SerializeField] GameObject tutorialSlider;
 
-        public void ShowTutorialPanel()
+        //[SerializeField] GameObject[] pointerPositions;
+
+        public int currentIndex = 0;
+        int enemyKills = 0;
+
+        List<string> tutorialTexts = new() { 
+            "Build a crystal tower",
+            "Build a archer tower",
+            "Build a mechine gun tower",
+            "Start the wave",
+            "Upgrade the tower",
+            "Kill 10 enemies"
+        };
+
+        private void Start()
         {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            currentIndex = 0;
             tutorialPanel.SetActive(true);
-            GameObject pointer = Instantiate(pointerPrefab, transform.position, Quaternion.identity);
-            pointer.transform.SetParent(tutorialPanel.transform);
-            pointer.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+            tutorialText.SetActive(true);
+            //tutorialSlider.SetActive(false);
+            tutorialText.GetComponent<TextMeshProUGUI>().SetText(tutorialTexts[currentIndex]);
         }
 
-        public void HideTutorialPanel()
+        private void FixedUpdate()
         {
-            tutorialPanel.SetActive(false);
-            Destroy(tutorialPanel.transform.GetChild(0).gameObject);
+            enemyKills = GameManager.Instance.GetEnemyKills();
+            if (enemyKills >= 10 && currentIndex == 5)
+            {
+                NextTutorial();
+            }
         }
 
+        public void NextTutorial()
+        {
+            //pointerPositions[currentIndex].SetActive(false);
+            currentIndex++;
+            if (currentIndex >= tutorialTexts.Count)
+            {
+                tutorialPanel.SetActive(false);
+                return;
+            }
+            tutorialText.GetComponent<TextMeshProUGUI>().SetText(tutorialTexts[currentIndex]);
+
+
+        }
 
     }
 }

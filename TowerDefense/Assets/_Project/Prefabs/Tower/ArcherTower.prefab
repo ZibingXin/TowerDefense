@@ -235,6 +235,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1585915219336529999, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585915219336529999, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585915219336529999, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585915219336529999, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1585915219336529999, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1742717492492641017, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -323,6 +343,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6105947268565952721, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105947268565952721, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105947268565952721, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105947268565952721, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6105947268565952721, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6115585618259962956, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -370,6 +410,42 @@ PrefabInstance:
     - target: {fileID: 6730309668347968794, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586401818654756794, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586401818654756794, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586401818654756794, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7586401818654756794, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625749524051340951, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625749524051340951, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625749524051340951, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625749524051340951, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625749524051340951, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9162790705625397650, guid: c12d1525a8b6845408dec52c47d71f2e, type: 3}
       propertyPath: m_Layer

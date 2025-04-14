@@ -22,6 +22,8 @@ namespace DoomsDayDefense
 
         public bool IsBuilding => selectedTower != null;
 
+        private int TutorialBuild = 0;
+
         private void Awake()
         {
             if (Instance == null)
@@ -81,6 +83,17 @@ namespace DoomsDayDefense
             Debug.Log("Tower built at " + site.transform.position);
 
             ClearSelection();
+
+            if (TutorialBuild == 1)
+            {
+                TutorialUI.Instance.NextTutorial();
+                TutorialBuild = 2;
+            }
+            else if (TutorialBuild == 0)
+            {
+                TutorialUI.Instance.NextTutorial();
+                TutorialBuild = 1;
+            }
         }
 
         public void RegisterBuildSite(BuildSite site)
