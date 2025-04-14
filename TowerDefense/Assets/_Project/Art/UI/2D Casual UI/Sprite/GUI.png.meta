@@ -404,7 +404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_4
+      name: _goldBadges
       rect:
         serializedVersion: 2
         x: 426
@@ -1372,7 +1372,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_55
+      name: _pointer
       rect:
         serializedVersion: 2
         x: 217
@@ -1614,7 +1614,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GUI_66
+      name: _done
       rect:
         serializedVersion: 2
         x: 396
@@ -1713,7 +1713,6 @@ TextureImporter:
       GUI_32: 21300064
       GUI_35: 21300070
       GUI_36: 21300072
-      GUI_4: 21300008
       GUI_42: 21300074
       GUI_44: 21300078
       GUI_45: 21300080
@@ -1725,7 +1724,6 @@ TextureImporter:
       GUI_52: 21300090
       GUI_53: 21300092
       GUI_54: 21300094
-      GUI_55: 21300096
       GUI_56: 21300098
       GUI_57: 21300100
       GUI_58: 21300102
@@ -1736,7 +1734,6 @@ TextureImporter:
       GUI_63: 21300112
       GUI_64: 21300114
       GUI_65: 21300116
-      GUI_66: 21300118
       GUI_9: 21300018
       _X: 21300120
       _ball: 21300014
@@ -1744,11 +1741,14 @@ TextureImporter:
       _button: 21300022
       _button_press: 21300020
       _diamond: 21300044
+      _done: 21300118
       _gold: 21300042
+      _goldBadges: 21300008
       _health: 21300040
       _panel: 21300054
       _panel2: 21300056
       _pause: 21300068
+      _pointer: 21300096
       _setting: 21300076
       _slider_background: 21300046
       _slider_fill: 21300038
